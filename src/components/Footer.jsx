@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
     <>
-      <div className="bg-bloodred-100">
+      <div className="">
         This is the footer section.
       </div>
     </>
