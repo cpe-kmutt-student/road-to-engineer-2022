@@ -1,20 +1,19 @@
+import { Arrow } from "./timeline/Arrow";
+import Background from "/image/bg-innovation.svg";
 export const Timeline = () => {
   return (
     <>
-      <div class="container bg-gray-200 mx-auto  h-full">
+      <div class="container mx-auto h-full ">
         <div class="relative wrap overflow-hidden p-10 h-full">
-          <div class="rounded-br-xl border-b-2 border-dashed border-bloodred-100" 
-          style="left: 50%"> 
-          </div>
           <div
             class="border-2-2  absolute border-dashed  border-bloodred-100 h-full border"
             style="left: 50%"
           ></div>
 
           {/* < Open House > */}
-          <div class="mb-8 flex justify-between items-center w-full  right-timeline">
+          <div class="relative mb-8  flex justify-between items-center w-full  right-timeline">
             {/* Left */}
-            <div class="order-1 w-5/12 text-center">
+            <div class="order-1 px-6 w-5/12 text-center">
               <h3 class="mb-3 font-bold text-bloodred-200 text-3xl">
                 Open House
               </h3>
@@ -26,29 +25,25 @@ export const Timeline = () => {
                 Open House!
               </button>
             </div>
-            {/* <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
-            </div> */}
-            <div className="z-20 rounded-br-xl border-b-2 border-dashed order-1 bg-bloodred-100">
-              1 
-            </div>
+            
+            <Arrow direction={"left"} />
+
             {/* Right */}
             <div class="order-1 w-5/12 px-6 py-4">
-              <img src="/public/image/Open-House.png" alt="" srcset="" />
+              <img src="/image/Open-House.png" alt="" srcset="" />
             </div>
           </div>
 
           {/* < Innovation > */}
-          <div class="mb-8 flex justify-between flex-row items-center w-full left-timeline">
+          <div class="relative mb-8 flex justify-between flex-row items-center w-full left-timeline">
             {/* Left */}
             <div class="order-1 w-5/12 px-6 py-4">
-              <img src="/public/image/CulComp.png" alt="" srcset="" />
+              <img src="/image/CulComp.png" alt="" srcset="" />
             </div>
 
+            <Arrow />
+
             {/* <!-- Right  --> */}
-            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
-            </div>
             <div class="order-1 px-6 py-4 bg-red-500 text-white text-center w-5/12">
               <h3 class="mb-3 font-bold text-3xl">แข่งขันนวัตกรรม</h3>
               <p class="text-sm py-4 leading-snug tracking-wide  text-opacity-100">
@@ -60,10 +55,14 @@ export const Timeline = () => {
                 Learn more
               </a>
             </div>
+            <img
+              src={Background}
+              class="absolute object-none -z-10 left-0 p-0 m-0 h-full w-full min-w-screen"
+            />
           </div>
 
           {/* < แข่งขันตอบปัญหาวิชาการ > */}
-          <div class="mb-8 flex justify-between items-center w-full right-timeline">
+          <div class="relative mb-8 flex justify-between items-center w-full right-timeline">
             {/* Left */}
             <div class="order-1 text-center w-5/12">
               <h3 class="mb-3 font-bold text-bloodred-200 text-3xl">
@@ -78,26 +77,22 @@ export const Timeline = () => {
               </a>
             </div>
 
-            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
-            </div>
-
+            <Arrow direction={"left"} />
+            
             {/* Right */}
             <div class="order-1 w-5/12 px-6 py-4">
-              <img src="/public/image/QuestComp.png" alt="" srcset="" />
+              <img src="/image/QuestComp.png" alt="" srcset="" />
             </div>
           </div>
 
           {/* < Bangmod Hackathon > */}
-          <div class="mb-8 flex justify-between flex-row items-center w-full left-timeline">
+          <div class="relative mb-8 flex justify-between flex-row items-center w-full left-timeline">
             {/* left */}
             <div class="order-1 w-5/12 px-6 py-4">
-              <img src="/public/image/Hackathon.png" alt="" srcset="" />
+              <img src="/image/Hackathon.png" alt="" srcset="" />
             </div>
 
-            <div class="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
-              <h1 class="mx-auto text-white font-semibold text-lg">4</h1>
-            </div>
+            <Arrow />
 
             {/* Right */}
             <div class="order-1 px-6 py-4 bg-red-500 text-white text-center w-5/12">
