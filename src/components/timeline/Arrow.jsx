@@ -5,7 +5,7 @@ export const Arrow = ({ direction }) => {
       : ["left-[50%]", " flex-row-reverse", "rounded-bl-full"];
   return (
     <div
-      class={`absolute flex items-center ${keyword[0] + keyword[1]} top-[50%]`}
+      class={`absolute hidden md:flex items-center ${keyword[0] + keyword[1]} top-[50%]`}
     >
       {console.log(
         `absolute flex items-center ${keyword[0] + keyword[1]} top-[50%]`
