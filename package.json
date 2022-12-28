@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.3",
     "preact": "^10.11.3",
+    "react-router-dom": "^6.6.1",
     "react-spring": "^9.5.5"
   },
   "devDependencies": {
