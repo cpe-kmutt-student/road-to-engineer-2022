@@ -5,11 +5,17 @@ const HOUR = MINUTE * 60;
 const DAY = HOUR * 24;
 export const CountDown = ({ deadline = new Date().toString() }) => {
   const parsedDeadline = React.useMemo(() => Date.parse(deadline), [deadline]);
-  const [time, setTime] = React.useState(parsedDeadline - Date.now());
+  const [time, setTime] = React.useState(null);
 
   React.useEffect(() => {
+    // set coutdown if deadline is not late
+    if (parsedDeadline - Date.now() > 0) setTime(parsedDeadline - Date.now());
+    //setInterval  if deadline set coutdown if not set to null
     const interval = setInterval(
-      () => setTime(parsedDeadline - Date.now()),
+      () =>
+        parsedDeadline - Date.now() > 0
+          ? setTime(parsedDeadline - Date.now())
+          : setTime(null),
       1000
     );
 
