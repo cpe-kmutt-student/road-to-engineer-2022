@@ -1,3 +1,4 @@
+import { ArrowDownButton } from "./ArrowDownButton";
 import { CountDown } from "./CountDown";
 
 export const TopSection = ({ onClickNext }) => {
@@ -20,13 +21,10 @@ export const TopSection = ({ onClickNext }) => {
                 src="/public/assets/building.svg"
                 className="object-cover p-2 h-[30vh] md:w lg:w-fit lg:h-fit  z-0"
               />
-              <div
+              <ArrowDownButton
                 onClick={onClickNext}
-                className="flex flex-col items-center cursor-pointer w-fit px-6 py-1 z-1 rounded-full font-bold text-3xl text-center text-white bg-black"
-              >
-                Read More
-                <img src="/public/assets/downarrow.svg" className="p-1" />
-              </div>      
+                label="Read More"
+              />
             </div>
         </div>
         
