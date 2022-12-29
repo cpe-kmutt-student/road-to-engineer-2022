@@ -25,22 +25,22 @@ export const CountDown = ({ deadline = new Date().toString() }) => {
   }, [parsedDeadline]);
 
   return (
-    <div className="flex flex-row justify-center items-center">
+    <div className="flex flex-row justify-center items-center max-w-[100vw]">
       {Object.entries({
         Days: time / DAY,
         Hours: (time / HOUR) % 24,
         Minutes: (time / MINUTE) % 60,
         Seconds: (time / SECOND) % 60,
       }).map(([label, value]) => (
-        <div key={label} className="">
-          <div className="box px-3 text-center text-3xl ">
-            {/* Time */}
-            <p className="p-6 mb-2 text-black font-extrabold bg-white w-28 rounded-3xl">
+        <div key={label} className="flex flex-col justify-center items-center px-3 max-w-[22vw] text-center">
+          {/* Time */}
+          <div className="flex justify-center items-center mb-2 text-black font-extrabold bg-white aspect-square w-[4.4rem] h-[4.4rem] text-4xl rounded-3xl">
+            <p className="">
               {`${Math.floor(value)}`.padStart(2, "0")}
             </p>
-            {/* Label Days/Hours */}
-            <span className="text-white">{label.toUpperCase()}</span>
           </div>
+          {/* Label Days/Hours */}
+          <span className="text-white text-xl sm:text-2xl text-center">{label.toUpperCase()}</span>
         </div>
       ))}
     </div>
