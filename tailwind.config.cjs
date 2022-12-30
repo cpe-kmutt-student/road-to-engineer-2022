@@ -17,6 +17,9 @@ module.exports = {
           200: '#8F0202',
           300: '#5E0505', 
         }
+      },
+      fontFamily: {
+        'DB-Heavent': ['DB Heavent', 'Roboto']
       }
     },
     // screens: {},

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: DB heavent;
+    font-weight: 400;
+    src: url(/public/fonts/DB_Heavent_Cond.ttf) format("tff");
+  }
+  @font-face {
+    font-family: DB Heavent;
+    font-weight: 500;
+    src: url(/public/fonts/DB_Heavent_Bd_Cond.ttf) format("tff");
+  }
+}
