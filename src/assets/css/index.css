@@ -6,6 +6,10 @@
   font-family: 'db-heaventcond', sans-serif;
 } */
 
+img {
+  pointer-events: none;
+}
+
 @font-face {
   font-family: 'db-heaventbold-cond-it';
   src: url('src/assets/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff2') format('woff2'),
