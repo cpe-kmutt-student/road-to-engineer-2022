@@ -5,7 +5,7 @@ export const ArrowDownButton = ({ onClick, label }) => {
       className="flex flex-col items-center cursor-pointer w-fit px-6 py-1 z-1 rounded-full font-bold text-3xl text-center text-white bg-black"
     >
       {label}
-      <img src="/public/assets/downarrow.svg" className="p-1" />
+      <img src="/assets/downarrow.svg" className="p-1" />
     </div>
   );
 };

@@ -7,7 +7,7 @@ export const TopSection = ({ onClickNext }) => {
       <div className="flex flex-wrap justify-evenly place-content-evenly min-h-screen pb-5 z-1">
         <div className="flex flex-col w-3/4 lg:w-1/2 items-center text-center">
           <img
-            src="/public/assets/roadtoengineer.png"
+            src="/assets/roadtoengineer.png"
             className="object-contain md:w-3/4 p-2 z-0"
           />
           <div className="">
@@ -18,7 +18,7 @@ export const TopSection = ({ onClickNext }) => {
         <div className="grow lg:w-1/2">
             <div className="flex flex-col m-auto md:mr-2 lg:m-auto w-fit place-content-end items-center text-center">   
               <img
-                src="/public/assets/building.svg"
+                src="/assets/building.svg"
                 className="object-cover p-2 h-[30vh] md:w lg:w-fit lg:h-fit  z-0"
               />
               <ArrowDownButton
