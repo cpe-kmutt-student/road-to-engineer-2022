@@ -1,9 +1,11 @@
 import { ArrowDownButton } from "./ArrowDownButton";
 import { CountDown } from "./CountDown";
+import { StarsBg } from "./StarsBg";
 
 export const TopSection = ({ onClickNext }) => {
   return (
     <div className="min-h-screen text-white select-none bg-gradient-to-b from-[#991D1D] to-[#170606]">
+      <StarsBg numOfStar={100}/>
       <div className="flex flex-wrap justify-evenly place-content-evenly min-h-screen pb-5 z-1">
         <div className="flex flex-col w-3/4 lg:w-1/2 items-center text-center">
           <img
