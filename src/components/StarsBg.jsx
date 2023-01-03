@@ -58,7 +58,7 @@ const Star = ({timeline, width, height}) => {
       }, ">");
     }
   }, [timeline, width, height]);
-  return <div ref={el} className="absolute w-0.5 h-0.5 bg-white rounded-full"></div>;
+  return <div ref={el} className="absolute w-0.5 h-0.5  md:w-1 md:h-1 bg-white rounded-full"></div>;
 
 }
 
