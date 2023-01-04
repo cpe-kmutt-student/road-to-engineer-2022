@@ -299,7 +299,20 @@ export const Timeline = () => {
           ease:CustomEase.create("custom", "M0,0,C0.08,0.158,0.392,0.69,0.666,0.738,0.869,0.773,0.888,0.973,1,1")
         })
       }
-
+    })
+    ScrollTrigger.create({
+      trigger: sections[0],
+      start: 'top top',
+      endTrigger: sections[3],
+      end: 'bottom bottom',
+      markers: true,
+      snap: {
+        snapTo: (sections.length - 1),
+        duration: {min: 0.25, max: 0.75}, 
+        delay: 0.125, 
+        ease: "power1.inOut"
+      }
+      
     })
     return () => {
     };
