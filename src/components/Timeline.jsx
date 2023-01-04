@@ -305,7 +305,7 @@ export const Timeline = () => {
       start: 'top top',
       endTrigger: sections[3],
       end: 'bottom bottom',
-      markers: true,
+      // markers: true,
       snap: {
         snapTo: (sections.length - 1),
         duration: {min: 0.25, max: 0.75}, 
