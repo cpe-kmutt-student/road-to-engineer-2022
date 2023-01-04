@@ -98,9 +98,6 @@ export const Timeline = () => {
       fill: "#cccccc"
     })
 
-
-
-
     // element reveal animation
     let flags = gsap.utils.toArray('#flag')
     flags.forEach((flag)=>{
@@ -300,20 +297,7 @@ export const Timeline = () => {
         })
       }
     })
-    ScrollTrigger.create({
-      trigger: sections[0],
-      start: 'top top',
-      endTrigger: sections[3],
-      end: 'bottom bottom',
-      // markers: true,
-      snap: {
-        snapTo: (sections.length - 1),
-        duration: {min: 0.25, max: 0.75}, 
-        delay: 0.125, 
-        ease: "power1.inOut"
-      }
-      
-    })
+
     return () => {
     };
   }, [])
