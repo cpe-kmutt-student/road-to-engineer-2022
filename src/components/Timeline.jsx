@@ -84,25 +84,7 @@ export const Timeline = () => {
       })
     })
     
-
-    let flagIdle = gsap.timeline({
-      reversed: true,
-      repeat: -1,
-      paused: true
-    }).to("#flag", {
-      duration: 2,
-      rotation: 5,
-      transformOrigin: "bottom right",
-    }).to("#flag", {
-      duration: 2,
-      rotation: -5,
-      transformOrigin: "bottom right",
-    }).to("#flag", {
-      duration: 2,
-      rotation: 5,
-      transformOrigin: "bottom right",
-    })
-
+    
     let idleLamp = gsap.timeline({
       repeatDelay: 5,
       repeat: -1,
@@ -116,33 +98,39 @@ export const Timeline = () => {
       fill: "#cccccc"
     })
 
-    let quesntionIdle = gsap.timeline({
-      paused: true,
-      repeat: -1,
-      yoyo: true,
-      reverse: true
-    }).from("#question", {
-      duration: 1,
-      rotation: 5,
-      scale: 0.8,
-    })
+
 
 
     // element reveal animation
     let flags = gsap.utils.toArray('#flag')
     flags.forEach((flag)=>{
+      let flagIdle = gsap.timeline({
+        paused: true,
+        reversed: true,
+        repeat: -1,
+      }).to(flag, {
+        duration: 2,
+        rotation: 5,
+        transformOrigin: "bottom right",
+      }).to(flag, {
+        duration: 2,
+        rotation: -5,
+        transformOrigin: "bottom right",
+      }).to(flag, {
+        duration: 2,
+        rotation: 5,
+        transformOrigin: "bottom right",
+      })
       gsap.from(flag, {
-        onComplete(){
-          flagIdle.play()
-        },
-        // onComplete: flagIdle.play(),
         scrollTrigger: {
           trigger: flag,
-          start: 'top 55%',
+          start: 'top 50%',
           // markers: true,
-      },
+        },
+        onComplete(){flagIdle.play()},
         duration: 1,
         // delay: 1,
+        opacity: 0,
         rotation: 90,
         transformOrigin: "bottom right",
         ease: "bounce"
@@ -169,6 +157,16 @@ export const Timeline = () => {
     })
     let questions = gsap.utils.toArray('#question')
     questions.forEach((question)=>{
+      let quesntionIdle = gsap.timeline({
+        paused: true,
+        repeat: -1,
+        yoyo: true,
+        reverse: true
+      }).from(question, {
+        duration: 1,
+        rotation: 5,
+        scale: 0.8,
+      })
       gsap.from(question, {
         onComplete(){
           quesntionIdle.play()
@@ -205,6 +203,7 @@ export const Timeline = () => {
       stagger: .1,
       yoyo: true,
       repeat: -1,
+      ease: "p"
     })
     let sections = gsap.utils.toArray("#section");
     sections.forEach((section)=>{
@@ -278,7 +277,7 @@ export const Timeline = () => {
           },
           duration: 20,
           immediateRender: true,
-          // ease: CustomEase.create("custom", "M0,0,C0.072,0.092,0.08,0.163,0.158,0.17,0.328,0.184,0.244,0.414,0.396,0.414,0.464,0.414,0.45,0.609,0.608,0.609,0.667,0.609,0.694,0.84,0.822,0.84,0.952,0.84,0.868,0.94,1,1")
+          ease:CustomEase.create("custom", "M0,0,C0.08,0.158,0.392,0.69,0.666,0.738,0.869,0.773,0.888,0.973,1,1")
         })
       },
       "(max-width: 768px)": function(){
@@ -297,7 +296,7 @@ export const Timeline = () => {
           },
           duration: 20,
           immediateRender: true,
-          // ease: CustomEase.create("custom", "M0,0,C0.072,0.092,0.08,0.163,0.158,0.17,0.328,0.184,0.244,0.414,0.396,0.414,0.464,0.414,0.45,0.609,0.608,0.609,0.667,0.609,0.694,0.84,0.822,0.84,0.952,0.84,0.868,0.94,1,1")
+          ease:CustomEase.create("custom", "M0,0,C0.08,0.158,0.392,0.69,0.666,0.738,0.869,0.773,0.888,0.973,1,1")
         })
       }
 
