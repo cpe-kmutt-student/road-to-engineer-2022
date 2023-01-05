@@ -1,13 +1,13 @@
-export const Email = () => {
+export const Phone = () => {
   return (
     <>
       <div className="w-full z-20">
-        <label htmlFor="email" className="flex flex-col text-xl"> 
-          Email
+        <label htmlFor="phone" className="flex flex-col text-xl"> 
+          Phone Number
           <input  
-            type="email" 
-            id="email" 
-            name="email" 
+            type="tel" 
+            id="phone" 
+            name="phone" 
             className="
               form-input
               mt-1
