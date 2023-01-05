@@ -1,13 +1,15 @@
-export const Checkbox = () => {
+export const Checkbox = ({ name, label, onClick, onChange }) => {
   return (
     <>
       <div className="w-full z-20">
-        <div className="flex flex-row items-center space-x-2 text-xl"> 
-          <input 
-            type="checkbox" 
-            id="checkbox" 
-            name="checkbox" 
-            className="
+        <div className="flex flex-row items-center space-x-2 text-xl">
+          <label className="align-bottom">
+            <input
+              type="checkbox"
+              id={name}
+              name={name}
+              className="
+              mr-2
               form-checkbox 
               rounded
               border-gray-400
@@ -16,9 +18,11 @@ export const Checkbox = () => {
               focus:ring-juicy-100 
               focus:ring-opacity-30
               focus:ring-offset-0
-              checked:text-juicy-100" 
-          />
-          <label className="align-bottom">Remember Me ?</label>
+              checked:text-juicy-100"
+              onClick={onClick}
+              onChange={onChange}
+            />
+            {label}</label>
         </div>
       </div>
     </>

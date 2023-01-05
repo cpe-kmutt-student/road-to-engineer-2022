@@ -6,6 +6,9 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  daisyui: {
+    themes: false,
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -28,5 +31,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('daisyui'),
+    require('tailwind-scrollbar')({ nocompatible: true }),
   ],
 }

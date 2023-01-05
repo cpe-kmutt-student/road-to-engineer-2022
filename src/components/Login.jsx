@@ -1,5 +1,6 @@
 import Road from "/image/road.svg";
 import Logo from "/image/loginopenhouse.svg";
+import Google from "/image/googlelogo.svg";
 import { Email } from './input/EmailInput';
 import { Password } from './input/PasswordInput';
 import { Checkbox } from './input/CheckboxInput';
@@ -21,27 +22,27 @@ export const Login = () => {
         
         {/* login card */}
         <div className="relative lg:absolute px-10 py-0 mb-10 md:mb-0 lg:py-24 w-full h-full flex justify-center lg:justify-end items-start lg:items-center z-20">
-          <div className="bg-white h-fit w-full lg:w-1/3 rounded-xl p-10 flex flex-col shadow-lg shadow-black/50">
-            <h1 className="text-juicy-200 text-4xl lg:text-6xl font-bold tracking-wide mb-2 md:mb-5">LOGIN</h1>
+          <div className="bg-white h-fit w-full lg:w-1/3 rounded-xl p-10 flex flex-col shadow-lg shadow-black/50 text-gray-500">
+            <h1 className="text-juicy-200 text-4xl lg:text-6xl font-bold tracking-wide mb-2 md:mb-5 uppercase">Login</h1>
             <form>
-              <div className="divide-y-2 divide-juicy-100/50 divide-dashed">
+              <div className="">
                 <div className="space-y-2 md:space-y-4 mb-5">
                   <Email />
-                  <Password />
-                  <Checkbox />
-
+                  <Password type="normal" />
+                  <Checkbox name="remember" label="Remember Me ?" />
                   <Button text="LOGIN" type="1" />
                   <span className="w-full flex justify-end text-lg text-decorate-100">
                     <a href="#" className="hover:text-juicy-100/75">Forgot password ?</a>
                   </span>
+                  <div className="divider">OR</div>
                 </div>
                 <div className="pt-8" />
               </div>
             </form>
-            <Button text="SIGN IN BY GOOGLE " type="2" />
+            <Button logo={Google} text= {` SIGN IN BY GOOGLE `} type="2" />
             <span className="w-full flex justify-center text-lg text-decorate-100 space-x-1 mt-2">
               <p>Need an account? </p>
-              <a href="#" className="hover:text-juicy-100/75 underline">SIGN UP</a>
+              <a href="/register" className="hover:text-juicy-100/75 underline">SIGN UP</a>
             </span>
           </div>
         </div>
