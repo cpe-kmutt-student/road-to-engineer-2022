@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { useState } from "preact/hooks";
 
 export const Consent = ({ setConsent }) => {
-  const text = "ยินยอมข้อตกลงนโยบายข้อมูลส่วนบุคคล";
-  const label = "accept";
   const [accept, setAccept] = useState(false);
   const handleCheck = (e) => {
     setAccept(e.target.checked);
@@ -90,8 +88,8 @@ export const Consent = ({ setConsent }) => {
             </div>
             <div className="space-y-2">
               <Checkbox
-                label={text}
-                name={label}
+                label="ยินยอมข้อตกลงนโยบายข้อมูลส่วนบุคคล"
+                name="accept"
                 onChange={handleCheck}
               />
             </div>
@@ -112,13 +110,6 @@ export const Consent = ({ setConsent }) => {
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
     </>
   );
 }
