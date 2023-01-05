@@ -1,5 +1,6 @@
-export const Dropdown = ({ label }) => {
-  const list = ['Apple', 'Banana', 'Orange'];
+export const Dropdown = ({ label, option }) => {
+  // const list = ['Apple', 'Banana', 'Orange'];
+  const list = Object.values(option);
   return (
     <>
       <div className="w-full z-20">
