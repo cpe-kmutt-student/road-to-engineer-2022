@@ -4,7 +4,7 @@ import smoLogo from '/assets/smoLogo.svg'
 export const Footer = () => {
   return (
     <>
-      <div className="relative h-full w-full flex flex-col overflow-hidden bg-bloodred-300">
+      <div className="relative h-full w-full flex flex-col overflow-hidden bg-bloodred-300 -z-10">
         <div className="z-50 min-h-[8rem] bg-gradient-to-b from-transparent to-black">
           <div className="flex flex-row justify-center space-x-4 mt-10">
             <img src={kmuttlogo} alt="kmuttlogo" className="h-20" />
