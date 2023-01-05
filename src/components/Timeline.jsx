@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect, useState } from "react";
+import { useLayoutEffect, useEffect, useState } from "preact/hooks";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
