@@ -1,4 +1,4 @@
-export const Text = ({name, label}) => {
+export const Text = ({name, label, onChange, input, setInput}) => {
   return (
     <>
       <div className="w-full z-20">
@@ -8,6 +8,10 @@ export const Text = ({name, label}) => {
             type="text" 
             id={name} 
             name={name}
+            onChange={(e)=>{
+              onChange && onChange(e);
+              input && setInput({...input, [name]: e.target.value});  
+            }}
             className="
               form-input
               mt-1

@@ -1,12 +1,13 @@
-export const Password = ({ type }) => {
+export const Password = ({ type, onChange }) => {
   return (
     <>
       <div className="w-full z-20">
         <label htmlFor="password" className="flex flex-col text-xl"> 
           { type == "confirm" ? <>Confirm Password</> : <>Password</> }
           <input  type="password" 
-                  id="password" 
+                  id={ type == "confirm" ? "passwordConfirmation" : "password"} 
                   name="password" 
+                  onChange={onChange}
                   className="
                     form-input
                     mt-1

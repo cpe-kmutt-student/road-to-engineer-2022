@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "gsap": "^3.11.4",
-    "daisyui": "^2.46.0",
     "axios": "^1.2.2",
+    "daisyui": "^2.46.0",
+    "gsap": "^3.11.4",
     "preact": "^10.11.3",
     "react-router-dom": "^6.6.1",
     "react-spring": "^9.5.5"

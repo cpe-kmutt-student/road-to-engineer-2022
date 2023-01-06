@@ -3,6 +3,7 @@ import signup2 from "/image/signup2.svg"
 import signup3 from "/image/signup3.svg"
 import signup4 from "/image/signup4.svg"
 import { Consent } from '../components/Consent';
+import { Help } from '../components/HelpContact';
 import { BasicRegister } from '../components/Register';
 import { useState } from 'preact/hooks';
 
@@ -22,13 +23,13 @@ export const RegisterPage = () => {
 
       {/*-- /#register --*/}
       <div id="register" className="">
-        { !consent ? <Consent setConsent={setConsent} /> : <BasicRegister /> }
-        {/* { true ? <Consent setConsent={setConsent} /> : <BasicRegister /> } */}
+        {/* { !consent ? <Consent setConsent={setConsent} /> : <BasicRegister /> } */}
+        { false ? <Consent setConsent={setConsent} /> : <BasicRegister /> }
       </div>
 
-
-      {/* <div className="h-screen"></div> */}
-
+      <div>
+        <Help />
+      </div>
     </div>
   );
 }

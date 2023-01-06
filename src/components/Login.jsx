@@ -1,3 +1,5 @@
+import { useAuth } from "../contexts/AuthContext";
+import { useState, useEffect } from "preact/hooks";
 import Road from "/image/road.svg";
 import Logo from "/image/loginopenhouse.svg";
 import Google from "/image/googlelogo.svg";
@@ -6,9 +8,23 @@ import { Password } from './input/PasswordInput';
 import { Checkbox } from './input/CheckboxInput';
 import { Button } from "./input/Button";
 
-
-
 export const Login = () => {
+  const { login, logout, status } = useAuth();
+
+  useEffect(()=>{
+    console.log(status);
+  }, [status])
+
+  const [signIn, setSignIn] = useState({
+    email: "",
+    password: "",
+  })
+
+  const handleChange = (e) => {
+    setSignIn({
+      ...signIn, [e.target.id] : e.target.value
+    })
+  }
 
   return (
     <>
@@ -27,10 +43,14 @@ export const Login = () => {
             <form>
               <div className="">
                 <div className="space-y-2 md:space-y-4 mb-5">
-                  <Email />
-                  <Password type="normal" />
+                  <Email onChange={handleChange} />
+                  <Password type="normal" onChange={handleChange} />
                   <Checkbox name="remember" label="Remember Me ?" />
-                  <Button text="LOGIN" type="1" />
+                  <Button text="LOGIN" type="1" 
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      console.log(login(signIn.email, signIn.password))
+                    }} />
                   <span className="w-full flex justify-end text-lg text-decorate-100">
                     <a href="#" className="hover:text-juicy-100/75">Forgot password ?</a>
                   </span>
@@ -39,7 +59,12 @@ export const Login = () => {
                 <div className="pt-8" />
               </div>
             </form>
-            <Button logo={Google} text= {` SIGN IN BY GOOGLE `} type="2" />
+            <Button logo={Google} text= {` SIGN IN BY GOOGLE `} type="2"
+              onClick={(e)=>{
+                e.preventDefault();
+                console.log(logout());
+              }}
+            />
             <span className="w-full flex justify-center text-lg text-decorate-100 space-x-1 mt-2">
               <p>Need an account? </p>
               <a href="/register" className="hover:text-juicy-100/75 underline">SIGN UP</a>

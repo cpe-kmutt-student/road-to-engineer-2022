@@ -1,4 +1,4 @@
-export const Phone = () => {
+export const Phone = ({ onChange }) => {
   return (
     <>
       <div className="w-full z-20">
@@ -7,7 +7,8 @@ export const Phone = () => {
           <input  
             type="tel" 
             id="phone" 
-            name="phone" 
+            name="phone"
+            onChange={onChange} 
             className="
               form-input
               mt-1

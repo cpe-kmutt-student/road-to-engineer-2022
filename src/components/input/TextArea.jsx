@@ -1,14 +1,17 @@
-export const Email = ({ onChange }) => {
+export const TextArea = ({name, label, onChange, input, setInput}) => {
   return (
     <>
       <div className="w-full z-20">
-        <label htmlFor="email" className="flex flex-col text-xl"> 
-          Email
-          <input  
-            type="email" 
-            id="email" 
-            name="email" 
-            onChange={onChange}
+        <label htmlFor={name} className="flex flex-col text-xl"> 
+          {label}
+          <textarea  
+            id={name} 
+            name={name}
+            rows="4"
+            onChange={(e)=>{
+              onChange && onChange(e);
+              input && setInput({...input, [name]: e.target.value});  
+            }}
             className="
               form-input
               mt-1
