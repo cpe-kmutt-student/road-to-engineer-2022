@@ -96,7 +96,6 @@ export const Consent = ({ setConsent }) => {
             <div className="w-full md:w-2/3 flex flex-row self-center space-x-2 md:space-x-20">
               <Button type="1" text="ยอมรับ" onClick={(e) => {
                 setConsent(accept);
-                console.log(accept)
                 e.preventDefault();
               }} />
               <Link to="/login" className="w-full">

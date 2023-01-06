@@ -61,7 +61,6 @@ export const BasicRegister = () => {
             <div>
               <h2 className="text-xl">ประเภทผู้ใช้งาน</h2>
               <div className="grid grid-cols-2 md:grid-cols-4" onChange={(e) => {
-                console.log(e.srcElement.value)
                 { e.srcElement.value == "Student" ? setIsStudent(1) : setIsStudent(null) }
                 return true;
               }}>
