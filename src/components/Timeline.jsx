@@ -7,6 +7,7 @@ import ElementPC from "./ElementPC";
 import ElementTablet from './ElementTablet'
 import ElementMobile from "./ElementMobile";
 import Car from "./Car";
+import BTNToTheTop from "./BTNToTheTop";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -239,6 +240,14 @@ export const Timeline = () => {
     })
     ScrollTrigger.matchMedia({
       "(min-width: 1280px)": function(){
+        gsap.from("#car", {
+          scrollTrigger: {
+            trigger: "#motionPathPC",
+            start: "top top",
+          },
+          duration: 1,
+          opacity: 0,
+        })
         gsap.to("#car", {
           scrollTrigger: {
             trigger: "#motionPathPC",
@@ -259,6 +268,14 @@ export const Timeline = () => {
         })
       },
       "(min-width: 768px)": function(){
+        gsap.from("#car", {
+          scrollTrigger: {
+            trigger: "#motionPathTablet",
+            start: "top top",
+          },
+          duration: 1,
+          opacity: 0,
+        })
         gsap.to("#car", {
           scrollTrigger: {
             trigger: "#motionPathTablet",
@@ -278,6 +295,14 @@ export const Timeline = () => {
         })
       },
       "(max-width: 768px)": function(){
+        gsap.from("#car", {
+          scrollTrigger: {
+            trigger: "#motionPathMobile",
+            start: "top top",
+          },
+          duration: 1,
+          opacity: 0,
+        })
         gsap.to("#car", {
           scrollTrigger: {
             trigger: "#motionPathMobile",
@@ -305,6 +330,7 @@ export const Timeline = () => {
 
   return (
     <>
+      <BTNToTheTop/>
       <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[1000] mix-blend-screen hidden pointer-events-none"></div>
       <div className="w-full h-full bg-contain bg-full bg-no-repeat md:bg-cover xl:bg-cover bg-road-bg-mobile md:bg-road-bg-ipad xl:bg-road-bg-pc">
         <div className="flex justify-center align-middle px-2 lg:px-10">
