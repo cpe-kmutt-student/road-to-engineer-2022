@@ -1,5 +1,34 @@
 import kmuttlogo from '/assets/kmuttlogo.svg'
 import smoLogo from '/assets/smoLogo.svg'
+import campHub from '/image/sponsor/camphub.svg'
+import heng from '/image/sponsor/heng.svg'
+import loong from '/image/sponsor/loong.svg'
+import major from '/image/sponsor/major.svg'
+import pastel from '/image/sponsor/pastel.svg'
+import peptein from '/image/sponsor/peptein.png'
+import techno from '/image/sponsor/techno.svg'
+import tp from '/image/sponsor/tp.svg'
+import farmluck from '/image/sponsor/farmluck.svg'
+
+const sponsors = [
+  campHub,
+  heng,
+  loong,
+  major,
+  pastel,
+  peptein,
+  techno,
+  tp,
+  farmluck
+]
+
+const Sponsor = ({sponsorSrc}) => {
+  return (
+    <div class="p-2 w-32 h-16 rounded-lg flex items-center justify-center bg-white shadow-lg object-cover">
+      <img src={sponsorSrc} className="max-h-full" alt="sponsor"/>
+    </div>
+  )
+}
 
 export const Footer = () => {
   return (
@@ -14,10 +43,11 @@ export const Footer = () => {
             <h2 className="text-[48px] md:text-7xl xl:text-8xl text-center font-bold pb-5 md:pb-10">Our Supporters</h2>
             <h3 className="text-[32px] md:text-4xl xl:text-5xl text-center">Sponsor & Partnership</h3>
             <div class="flex flex-wrap gap-4 justify-center my-10 mx-10">
-              <div class="p-4 w-32 rounded-lg flex items-center justify-center bg-white shadow-lg">01</div>
-              <div class="p-4 w-32 rounded-lg flex items-center justify-center bg-white shadow-lg">02</div>
-              <div class="p-4 w-32 rounded-lg flex items-center justify-center bg-white shadow-lg">03</div>
-              <div class="p-4 w-32 rounded-lg flex items-center justify-center bg-white shadow-lg">04</div>
+              {
+                sponsors.map((sponsorSrc) => {
+                  return <Sponsor sponsorSrc={sponsorSrc}/>
+                })
+              }
             </div>
           </div>
         </div>
