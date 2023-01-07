@@ -5,6 +5,7 @@ import { Password } from "./input/PasswordInput";
 import { Phone } from "./input/Phone";
 import { Text } from "./input/TextInput";
 import { Dropdown } from "./input/DropdownInput";
+import { DataPolicy } from "./DataPolicy";
 import { useState, useEffect } from 'preact/hooks';
 import fetch from "../utils/fetchAxios";
 
@@ -44,6 +45,8 @@ export const BasicRegister = () => {
   });
 
   const [isStudent, setIsStudent] = useState(null);
+  const [isInvalid, setIsInvalid] = useState(false);
+  const [isConfirming, setIsConfirming] = useState(true);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
@@ -60,47 +63,83 @@ export const BasicRegister = () => {
     e.preventDefault();
   }
 
+  const handleSignUpButton = (e) => {
+    e.preventDefault();
+    if (
+      input.firstname.length &&
+      input.lastname.length &&
+      /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email) &&
+      input.phone.length &&
+      input.password.length &&
+      input.passwordConfirmation.length &&
+      input.accountType.length &&
+      (isStudent ? input.educationLevel.length && input.schoolName.length : true)
+    ){
+      setIsConfirming(true);
+      setIsInvalid(false);
+    }
+      
+    else
+      setIsInvalid(true);
+  }
+
   return (
     <>
       <div className="w-screen min-h-screen md:h-fit p-10 md:p-20 flex justify-center items-center">
         <div className="bg-white w-full h-fit md:h-fit p-8 md:p-10 flex flex-col rounded-xl shadow-lg shadow-black/50 text-gray-500 z-50">
-          <h1 className="text-juicy-200 text-4xl lg:text-6xl font-bold tracking-wide mb-2 md:mb-5 uppercase">Sign Up</h1>
+          
+          <h1 className="text-juicy-200 text-4xl lg:text-6xl font-bold tracking-wide mb-2 md:mb-5 uppercase">
+            {!isConfirming ? "Sign Up" : "นโยบายข้อมูลส่วนบุคคล"}
+          </h1>
+          
           <form className="space-y-5" onSubmit={handleSubmit}>
-            <div className="space-y-2">
-              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
-                <Text name="firstname" label="ชื่อ" onChange={handleChange} />
-                <Text name="lastname" label="นามสกุล" onChange={handleChange} />
+            {!isConfirming && <>
+              <div className="space-y-2">
+                <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
+                  <Text name="firstname" label="ชื่อ" onChange={handleChange} />
+                  <Text name="lastname" label="นามสกุล" onChange={handleChange} />
+                </div>
+                <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
+                  <Email onChange={handleChange} />
+                  <Phone onChange={handleChange} />
+                </div>
+                <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
+                  <Password type="normal" onChange={handleChange} />
+                  <Password type="confirm" onChange={handleChange} />
+                </div>
               </div>
-              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
-                <Email onChange={handleChange} />
-                <Phone onChange={handleChange} />
-              </div>
-              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
-                <Password type="normal" onChange={handleChange} />
-                <Password type="confirm" onChange={handleChange} />
-              </div>
-            </div>
-            <div>
-              <h2 className="text-xl">ประเภทผู้ใช้งาน</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4" onChange={(e) => {
-                e.target.value == "Student" ? setIsStudent(1) : setIsStudent(null);
-                const e_account = {
-                  target: {
-                    id: e.target.name,
-                    value: e.target.value
+              <div>
+                <h2 className="text-xl">ประเภทผู้ใช้งาน</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4" onChange={(e) => {
+                  e.target.value == "Student" ? setIsStudent(1) : setIsStudent(null);
+                  const e_account = {
+                    target: {
+                      id: e.target.name,
+                      value: e.target.value
+                    }
                   }
-                }
-                handleChange(e_account);
-              }}>
-                <Radio name="Student" label="นักเรียน/นักศึกษา" group="accountType" />
-                <Radio name="Parent" label="ผู้ปกครอง" group="accountType" />
-                <Radio name="Teacher" label="ครู-อาจารย์" group="accountType" />
-                <Radio name="Other" label="บุคคลทั่วไป" group="accountType" />
+                  handleChange(e_account);
+                }}>
+                  <Radio name="Student" label="นักเรียน/นักศึกษา" group="accountType" />
+                  <Radio name="Parent" label="ผู้ปกครอง" group="accountType" />
+                  <Radio name="Teacher" label="ครู-อาจารย์" group="accountType" />
+                  <Radio name="Other" label="บุคคลทั่วไป" group="accountType" />
+                </div>
               </div>
-            </div>
-            {isStudent && <StudentRegister handleChange={handleChange} input={input} setInput={setInput} />}
-            <div className="md:h-6" />
-            <Button text="Sign Up" type="1" />
+              {isStudent && <StudentRegister handleChange={handleChange} input={input} setInput={setInput} />}
+              <div className="md:h-6" />
+              {isInvalid && <p className="text-red-500 text-sm">กรุณากรอกข้อมูลให้ครบถ้วน</p>}
+              <Button text="Sign Up" type="1" onClick={handleSignUpButton} />
+            </>}
+            { isConfirming && <>
+              <DataPolicy />
+              <div className="flex justify-center gap-16">
+                <Button text="ยอมรับ" type="1" onClick={handleSubmit} />
+                <Button text="ยกเลิก" type="1" onClick={() => setIsConfirming(false)} />
+              </div>
+            </>
+            }
+
             <span className="w-full flex justify-center text-lg text-decorate-100 space-x-1 mt-2">
               <p>Already a user? </p>
               <a href="/login" className="hover:text-juicy-100/75 underline">LOGIN</a>

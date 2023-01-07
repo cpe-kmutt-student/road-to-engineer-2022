@@ -29,3 +29,12 @@
   font-weight: normal;
   font-style: normal;
 }
+
+ol li {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+ol > li > ol > li {
+  margin-left: 1.5rem;
+}
