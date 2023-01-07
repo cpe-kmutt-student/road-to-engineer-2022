@@ -8,7 +8,7 @@ import { Dropdown } from "./input/DropdownInput";
 import { DataPolicy } from "./DataPolicy";
 import { useState, useEffect } from 'preact/hooks';
 import fetch from "../utils/fetchAxios";
-
+import { useNavigate } from "react-router-dom";
 
 const StudentRegister = ({ input, setInput }) => {
   const studentGrade = {
@@ -43,6 +43,7 @@ export const BasicRegister = () => {
     educationLevel: '',
     schoolName: '',
   });
+  const navigate = useNavigate();
 
   const [isStudent, setIsStudent] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -56,6 +57,7 @@ export const BasicRegister = () => {
     fetch.post('/register/create', input)
     .then((res)=>{
       console.log(res);
+      navigate('/login');
     })
     .catch((error)=>{
       console.log(error);
