@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     fetch
       .post("/login/authentication", { email, password })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (typeof response.data === "object" && response.data?.length > 0){
           const {
             name,
@@ -40,8 +40,8 @@ export const AuthProvider = ({ children }) => {
           setStatus("unauthenticated")
         }
     }).catch((error) => {
-      console.error(error)
-      // navigate('/')
+      // console.error(error)
+      navigate('/')
     });
 
   }
