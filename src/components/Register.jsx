@@ -46,7 +46,7 @@ export const BasicRegister = () => {
 
   const [isStudent, setIsStudent] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
-  const [isConfirming, setIsConfirming] = useState(true);
+  const [isConfirming, setIsConfirming] = useState(false);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
