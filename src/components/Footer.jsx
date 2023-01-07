@@ -10,21 +10,24 @@ import techno from '/image/sponsor/techno.svg'
 import tp from '/image/sponsor/tp.svg'
 import farmluck from '/image/sponsor/farmluck.svg'
 
-const sponsors = [
+const bigSponsors = [
   campHub,
+  peptein,
+  pastel
+]
+
+const sponsors = [
   heng,
   loong,
   major,
-  pastel,
-  peptein,
   techno,
   tp,
   farmluck
 ]
 
-const Sponsor = ({sponsorSrc}) => {
+const Sponsor = ({sponsorSrc, isBig}) => {
   return (
-    <div class="p-2 w-32 h-16 rounded-lg flex items-center justify-center bg-white shadow-lg object-cover">
+    <div class={`p-2 ${isBig ? "w-48 h-32" : "w-32 h-16"} rounded-lg flex items-center justify-center bg-white shadow-lg object-cover`}>
       <img src={sponsorSrc} className="max-h-full" alt="sponsor"/>
     </div>
   )
@@ -39,9 +42,16 @@ export const Footer = () => {
             <img src={kmuttlogo} alt="kmuttlogo" className="h-20" />
             <img src={smoLogo} alt="smoLogo" className="h-20" />
           </div>
-          <div className="flex flex-col justify-center py-20 md:pb-0 text-white">
+          <div className="flex flex-col justify-center py-5 md:pb-0 text-white">
             <h2 className="text-[48px] md:text-7xl xl:text-8xl text-center font-bold pb-5 md:pb-10">Our Supporters</h2>
             <h3 className="text-[32px] md:text-4xl xl:text-5xl text-center">Sponsor & Partnership</h3>
+            <div class="flex flex-wrap gap-4 justify-center mt-10 mx-10">
+              {
+                bigSponsors.map((sponsorSrc) => {
+                  return <Sponsor sponsorSrc={sponsorSrc} isBig={true}/>
+                })
+              }
+            </div>
             <div class="flex flex-wrap gap-4 justify-center my-10 mx-10">
               {
                 sponsors.map((sponsorSrc) => {
