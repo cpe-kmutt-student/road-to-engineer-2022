@@ -1,4 +1,4 @@
-export const Email = ({ onChange }) => {
+export const Email = () => {
   return (
     <>
       <div className="w-full z-20">
@@ -8,7 +8,6 @@ export const Email = ({ onChange }) => {
             type="email" 
             id="email" 
             name="email" 
-            onChange={onChange}
             className="
               form-input
               mt-1

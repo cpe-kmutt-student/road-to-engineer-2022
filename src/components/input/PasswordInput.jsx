@@ -1,14 +1,12 @@
-export const Password = ({ type, onChange }) => {
+export const Password = ({ type }) => {
   return (
     <>
       <div className="w-full z-20">
         <label htmlFor="password" className="flex flex-col text-xl"> 
           { type == "confirm" ? <>Confirm Password</> : <>Password</> }
           <input  type="password" 
-                  id={ type == "confirm" ? "passwordConfirmation" : "password"} 
+                  id="password" 
                   name="password" 
-                  onChange={onChange}
-                  autoComplete="true"
                   className="
                     form-input
                     mt-1
