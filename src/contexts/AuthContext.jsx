@@ -86,7 +86,6 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       setStatus("unauthenticated");
     }
-
   }, []);
 
   return (
