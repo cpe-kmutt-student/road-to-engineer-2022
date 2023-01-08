@@ -1,7 +1,4 @@
-// import { useState } from 'preact/hooks';
-
 export const Email = () => {
-  // const emailil = useState(0);
   return (
     <>
       <div className="w-full z-20">

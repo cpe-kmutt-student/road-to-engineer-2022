@@ -7,10 +7,11 @@ Repo for the Road to Engineering 2023 open house information platform created us
 
 ## 🛠️ Develop
 
-1. Create a `.env` using template from `.env.example` and set desired port to `VITE_PORT`.
+1. Create a `.env` using template from `.env.example` and set desired configuration to `VITE_PORT` and `VITE_BACKEND_URL`.
 
 ```
 VITE_PORT=5000
+VITE_BACKEND_URL=https://your-backend-url.com
 ```
 
 2. Run `yarn` command in your terminal.

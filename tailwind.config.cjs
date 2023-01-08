@@ -6,10 +6,19 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  daisyui: {
+    themes: false,
+  },
   theme: {
     extend: {
       fontFamily: {
         sans:['db-heaventcond', ...defaultTheme.fontFamily.sans],
+      },
+      backgroundImage: {
+        'road-bg-pc': "url('/image/road-bg-pc.svg')",
+        'road-bg-ipad': "url('/image/road-bg-ipad.svg')",
+        'road-bg-mobile': "url('/image/road-bg-mobile.svg')",
+        'eng-bg': "url('/assets/Hero-Bg.svg')"
       },
       colors: {
         'bloodred': {
@@ -31,5 +40,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('daisyui'),
+    require('tailwind-scrollbar')({ nocompatible: true }),
   ],
 }
