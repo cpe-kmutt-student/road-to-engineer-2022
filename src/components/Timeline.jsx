@@ -278,7 +278,6 @@ export const Timeline = () => {
           duration: 1,
           opacity: 0,
         })
-
         gsap.to("#car", {
           scrollTrigger: {
             trigger: "#motionPathTablet",
