@@ -1,0 +1,5 @@
+export const Estamp = () => {
+  return (
+    <></>
+  )
+}
