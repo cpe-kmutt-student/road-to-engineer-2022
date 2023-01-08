@@ -7,12 +7,17 @@ import { Email } from './input/EmailInput';
 import { Password } from './input/PasswordInput';
 import { Checkbox } from './input/CheckboxInput';
 import { Button } from "./input/Button";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const { login, logout, status } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(status);
+    if (status == "authenticated") {
+      navigate("/announcement");
+    }
   }, [status])
 
   const [signIn, setSignIn] = useState({
@@ -22,7 +27,7 @@ export const Login = () => {
 
   const handleChange = (e) => {
     setSignIn({
-      ...signIn, [e.target.id] : e.target.value
+      ...signIn, [e.target.id]: e.target.value
     })
   }
 
@@ -35,7 +40,7 @@ export const Login = () => {
         <div className="fixed md:px-5 pt-16 m-0 w-screen h-screen flex justify-start items-end z-0">
           <img src={Road} alt="" className="object-cover md:object-contain object-bottom h-2/3" />
         </div>
-        
+
         {/* login card */}
         <div className="relative lg:absolute px-10 py-0 mb-10 md:mb-0 lg:py-24 w-full h-full flex justify-center lg:justify-end items-start lg:items-center z-20">
           <div className="bg-white h-fit w-full lg:w-1/3 rounded-xl p-10 flex flex-col shadow-lg shadow-black/50 text-gray-500">
@@ -46,10 +51,10 @@ export const Login = () => {
                   <Email onChange={handleChange} />
                   <Password type="normal" onChange={handleChange} />
                   <Checkbox name="remember" label="Remember Me ?" />
-                  <Button text="LOGIN" type="1" 
-                    onClick={(e)=>{
+                  <Button text="LOGIN" type="1"
+                    onClick={(e) => {
                       e.preventDefault();
-                      console.log(login(signIn.email, signIn.password))
+                      login(signIn.email, signIn.password);
                     }} />
                   <span className="w-full flex justify-end text-lg text-decorate-100">
                     <a href="#" className="hover:text-juicy-100/75">Forgot password ?</a>
@@ -59,10 +64,10 @@ export const Login = () => {
                 <div className="pt-8" />
               </div>
             </form>
-            <Button logo={Google} text= {` SIGN IN BY GOOGLE `} type="2"
-              onClick={(e)=>{
+            <Button logo={Google} text={` SIGN IN BY GOOGLE `} type="2"
+              onClick={(e) => {
                 e.preventDefault();
-                console.log(logout());
+                logout();
               }}
             />
             <span className="w-full flex justify-center text-lg text-decorate-100 space-x-1 mt-2">

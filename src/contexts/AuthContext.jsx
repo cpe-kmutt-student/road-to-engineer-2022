@@ -1,6 +1,7 @@
 import { createContext } from "preact";
 import { useEffect, useState, useContext } from "preact/hooks";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import fetch from "../utils/fetchAxios";
 
 const AuthContext = createContext();
@@ -38,9 +39,23 @@ export const AuthProvider = ({ children }) => {
           setUser(null);
           setStatus("unauthenticated")
         }
-    }).catch((error) => {
-      navigate('/')
-    });
+      }).catch((error) => {
+        console.log(error)
+        Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        }).fire({
+          icon: 'error',
+          title: error.message,
+        })
+      });
 
   }
 
@@ -49,11 +64,11 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("userinfo");
     setUser(null);
     setStatus("unauthenticated");
-    navigate('/');
+    navigate('/login');
   }
 
   useEffect(() => {
-    try{
+    try {
       const userToken = localStorage.getItem("user");
       const userInfo = JSON.parse(atob(localStorage.getItem("userinfo") || "") || "{}");
       if (userToken) {
@@ -61,7 +76,7 @@ export const AuthProvider = ({ children }) => {
         if (jwt.exp < Date.now()) {
           setUser(userInfo);
           setStatus("authenticated");
-        }else {
+        } else {
           throw Error("Token expired");
         }
       } else {
@@ -71,7 +86,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       setStatus("unauthenticated");
     }
-    
+
   }, []);
 
   return (

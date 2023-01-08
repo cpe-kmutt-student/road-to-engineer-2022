@@ -8,8 +8,9 @@ import { Dropdown } from "./input/DropdownInput";
 import { DataPolicy } from "./DataPolicy";
 import { useState, useEffect, useRef } from 'preact/hooks';
 import fetch from "../utils/fetchAxios";
+import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-// import { async } from "postcss-js";
+import Swal from 'sweetalert2';
 
 const StudentRegister = ({ input, setInput }) => {
   const studentGrade = {
@@ -24,9 +25,9 @@ const StudentRegister = ({ input, setInput }) => {
     <>
       <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 mb-5 items-center">
         <Dropdown
-          name="educationLevel" label="ระดับการศึกษา" option={studentGrade} input={input} setInput={setInput}
+          name="educationLevel" label="ระดับการศึกษา" option={studentGrade} input={input} setInput={setInput} value={input.studentGrade}
         />
-        <Text name="schoolName" label="ชื่อสถานศึกษา" input={input} setInput={setInput} />
+        <Text name="schoolName" label="ชื่อสถานศึกษา" input={input} setInput={setInput} value={input.schoolName} />
       </div>
     </>
   )
@@ -44,20 +45,25 @@ export const BasicRegister = () => {
     educationLevel: '',
     schoolName: '',
   });
+
+  const accType = {
+    Student: "นักเรียน/นักศึกษา",
+    Parent: "ผู้ปกครอง",
+    Teacher: "ครู-อาจารย์",
+    Other: "บุคคลทั่วไป",
+  }
+
   const navigate = useNavigate();
 
   const [isStudent, setIsStudent] = useState(null);
   const [isInvalid, setIsInvalid] = useState(false);
   const [isConfirming, setIsConfirming] = useState(false);
-  // const [status, setStatus] = useState(null);
 
-  // const modalRef = useRef(null);
+  const { login } = useAuth();
 
-  // const showModal = () => {
-  //   const nowRef = ref.current
-  //   console.log(nowRef);
-  //   nowRef.click();
-  // }
+  useEffect(() => {
+    console.log(input);
+  }, [input]);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
@@ -66,22 +72,51 @@ export const BasicRegister = () => {
   const handleSubmit = (e) => {
     fetch.post('/register/create', input)
       .then((res) => {
-        console.log(res);
+        Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        }).fire({
+          icon: 'success',
+          title: 'Signed Up successfully !'
+        })
+        // console.log(res);
+        login(input.email, input.password)
         navigate('/login');
-
       })
       .catch((error) => {
+        Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        }).fire({
+          icon: 'error',
+          title: 'Email has already used !'
+        })
         console.error(error);
+        setInput({
+          ...input,
+          email: "",
+          password: "",
+          passwordConfirmation: ""
+        })
+        setIsConfirming(false);
+        setIsInvalid(false);
       })
     e.preventDefault();
   }
-
-  // const modalPromise = new Promise((resolve, reject) => {
-  //   setTimeout(() => {
-  //     resolve(status);
-  //   }, 300);
-  // });
-  
 
   const handleSignUpButton = async (e) => {
     e.preventDefault();
@@ -95,11 +130,8 @@ export const BasicRegister = () => {
       input.accountType.length &&
       (isStudent ? input.educationLevel.length && input.schoolName.length : true)
     ) {
-      // modalPromise.then(()=>{
-
-        setIsConfirming(true);
-        setIsInvalid(false);
-      // })
+      setIsConfirming(true);
+      setIsInvalid(false);
     }
 
     else
@@ -112,24 +144,24 @@ export const BasicRegister = () => {
 
         <div className="bg-white w-full h-fit md:h-fit p-8 md:p-10 flex flex-col rounded-xl shadow-lg shadow-black/50 text-gray-500 z-50">
 
-          <h1 className="text-juicy-200 text-4xl lg:text-6xl font-bold tracking-wide mb-2 md:mb-5 uppercase">
+          <h1 className="w-full text-juicy-200 text-4xl lg:text-6xl font-bold tracking-wide mb-2 md:mb-5 uppercase">
             {!isConfirming ? "Sign Up" : "นโยบายข้อมูลส่วนบุคคล"}
           </h1>
 
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <form className="space-y-5 w-full" onSubmit={handleSubmit}>
             {!isConfirming && <>
               <div className="space-y-2">
                 <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
-                  <Text name="firstname" label="ชื่อ" onChange={handleChange} />
-                  <Text name="lastname" label="นามสกุล" onChange={handleChange} />
+                  <Text name="firstname" label="ชื่อ" onChange={handleChange} value={input.firstname} />
+                  <Text name="lastname" label="นามสกุล" onChange={handleChange} value={input.lastname} />
                 </div>
                 <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
-                  <Email onChange={handleChange} />
-                  <Phone onChange={handleChange} />
+                  <Email onChange={handleChange} value={input.email} />
+                  <Phone onChange={handleChange} value={input.phone} />
                 </div>
                 <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 items-center">
-                  <Password type="normal" onChange={handleChange} />
-                  <Password type="confirm" onChange={handleChange} />
+                  <Password type="normal" onChange={handleChange} value={input.password} />
+                  <Password type="confirm" onChange={handleChange} value={input.passwordConfirmation} />
                 </div>
               </div>
               <div>
@@ -144,10 +176,10 @@ export const BasicRegister = () => {
                   }
                   handleChange(e_account);
                 }}>
-                  <Radio name="Student" label="นักเรียน/นักศึกษา" group="accountType" />
-                  <Radio name="Parent" label="ผู้ปกครอง" group="accountType" />
-                  <Radio name="Teacher" label="ครู-อาจารย์" group="accountType" />
-                  <Radio name="Other" label="บุคคลทั่วไป" group="accountType" />
+                  {Object.keys(accType).map((name) =>
+                    <Radio name={name} label={accType[name]} group="accountType" checked={input.accountType == name} />
+                  )
+                  }
                 </div>
               </div>
               {isStudent && <StudentRegister handleChange={handleChange} input={input} setInput={setInput} />}
@@ -155,25 +187,15 @@ export const BasicRegister = () => {
               {isInvalid && <p className="text-red-500 text-sm">กรุณากรอกข้อมูลให้ครบถ้วน</p>}
               <Button text="Sign Up" type="1" onClick={handleSignUpButton} />
 
-              {/* The button to open modal */}
-              {/* <label htmlFor="my-modal-4" className="btn" ref={modalRef}>open modal</label> */}
-
-              {/* Put this part before </body> tag */}
-              {/* <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-              <label htmlFor="my-modal-4" className="modal cursor-pointer">
-                <label className="modal-box relative" htmlFor="">
-                  <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
-                  <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                </label>
-              </label> */}
-
             </>}
             {isConfirming && <>
               <DataPolicy />
-              <div className="flex justify-center gap-16">
-                <Button text="ยอมรับ" type="1" onClick={handleSubmit} href="#" />
-                <Button text="ยกเลิก" type="1" onClick={() => setIsConfirming(false)} />
-              </div>
+              <span className="w-full flex justify-center">
+                <div className="w-full md:w-2/3 flex flex-row items-center space-x-2 md:space-x-20">
+                  <Button text="ยอมรับ" type="1" onClick={handleSubmit} href="#" />
+                  <Button text="ยกเลิก" type="2" onClick={() => setIsConfirming(false)} />
+                </div>
+              </span>
             </>
             }
 

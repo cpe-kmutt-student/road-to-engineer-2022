@@ -1,4 +1,4 @@
-export const Text = ({name, label, onChange, input, setInput}) => {
+export const Text = ({name, label, onChange, input, setInput, value}) => {
   return (
     <>
       <div className="w-full z-20">
@@ -23,6 +23,7 @@ export const Text = ({name, label, onChange, input, setInput}) => {
               focus:ring 
               focus:ring-juicy-100 
               focus:ring-opacity-30" 
+            value={value}
             required
           />
         </label>

@@ -1,4 +1,4 @@
-export const Password = ({ type, onChange }) => {
+export const Password = ({ type, onChange, value }) => {
   return (
     <>
       <div className="w-full z-20">
@@ -9,6 +9,7 @@ export const Password = ({ type, onChange }) => {
                   name="password" 
                   onChange={onChange}
                   autoComplete="true"
+                  value={value}
                   className="
                     form-input
                     mt-1

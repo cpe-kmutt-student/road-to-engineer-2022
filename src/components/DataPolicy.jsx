@@ -1,7 +1,7 @@
 export const DataPolicy = () => {
   return (
-    <div className="bg-[#FFEADD] rounded-lg scroll-p-0 scroll-m-0 overflow-y-scroll max-h-[50vh] text-xl">
-      <ol className="m-6 mr-8" style="scrollbar-color: #8C2B0C">
+    <div className="bg-juicy-100/20 rounded-lg max-h-[50vh] text-md md:text-xl scrollbar-thin scrollbar-thumb-juicy-100 scrollbar-track-juicy-100/25 overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+      <ol className="m-4 md:m-6 md:mr-8 space-y-2" style="scrollbar-color: #8C2B0C">
         <li>
           ข้อมูลสำคัญเกี่ยวกับโครงการ
           <ol>
@@ -40,7 +40,7 @@ export const DataPolicy = () => {
             โครงการจะเก็บข้อมูลส่วนบุคคลของท่านเท่าที่จำเป็น ในการจัดโครงการครั้งปัจจุบัน และสำหรับโครงการครั้งถัดไป โดยไม่เกิน 4 ปี</li>
 
             <li> สิทธิของท่านเกี่ยวกับข้อมูลส่วนบุคคล
-            ท่านสามารถใช้สิทธิที่ท่านมีอยู่ตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล อันรวมถึงการเข้าถึง การแก้ไข การลบ และระงับการประมวลผลข้อมูลส่วนบุคคล โดยติดต่อผ่านทางผู้ดูแลข้อมูลของโครงการ ได้ที่อีเมล stdunion.eng@kmutt.ac.th </li>
+            ท่านสามารถใช้สิทธิที่ท่านมีอยู่ตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล อันรวมถึงการเข้าถึง การแก้ไข การลบ และระงับการประมวลผลข้อมูลส่วนบุคคล โดยติดต่อผ่านทางผู้ดูแลข้อมูลของโครงการ ได้ที่อีเมล   <a href="mailto:stdunion.eng@kmutt.ac.th" className="text-juicy-200" >stdunion.eng@kmutt.ac.th</a> </li>
           </ol>
         </li>
       </ol>
