@@ -5,27 +5,45 @@
 /* :root {
   font-family: 'db-heaventcond', sans-serif;
 } */
+.section {
+  @apply w-full p-2 md:p-5;
+}
+.section .section-title {
+  @apply text-center text-2xl font-bold pb-8 text-black;
+}
+.card-image {
+  @apply relative md:transform md:transition md:duration-500 md:hover:scale-110;
+}
+.card-image-text {
+  @apply absolute  text-center top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2;
+}
 
 @font-face {
-  font-family: 'db-heaventbold-cond-it';
-  src: url('src/assets/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff2') format('woff2'),
-       url('src/assets/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff') format('woff');
+  font-family: "db-heaventbold-cond-it";
+  src: url("src/assets/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff2")
+      format("woff2"),
+    url("src/assets/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'db-heaventbold-cond';
-  src: url('src/assets/fonts/db_heavent/db_heavent_bd_cond_v3.2.1-webfont.woff2') format('woff2'),
-       url('src/assets/fonts/db_heavent/db_heavent_bd_cond_v3.2.1-webfont.woff') format('woff');
+  font-family: "db-heaventbold-cond";
+  src: url("src/assets/fonts/db_heavent/db_heavent_bd_cond_v3.2.1-webfont.woff2")
+      format("woff2"),
+    url("src/assets/fonts/db_heavent/db_heavent_bd_cond_v3.2.1-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'db-heaventcond';
-  src: url('src/assets/fonts/db_heavent/db_heavent_cond_v3.2.1-webfont.woff2') format('woff2'),
-       url('src/assets/fonts/db_heavent/db_heavent_cond_v3.2.1-webfont.woff') format('woff');
+  font-family: "db-heaventcond";
+  src: url("src/assets/fonts/db_heavent/db_heavent_cond_v3.2.1-webfont.woff2")
+      format("woff2"),
+    url("src/assets/fonts/db_heavent/db_heavent_cond_v3.2.1-webfont.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
 }
