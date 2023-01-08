@@ -8,6 +8,7 @@ export const Password = ({ type, onChange }) => {
                   id={ type == "confirm" ? "passwordConfirmation" : "password"} 
                   name="password" 
                   onChange={onChange}
+                  autoComplete="true"
                   className="
                     form-input
                     mt-1
