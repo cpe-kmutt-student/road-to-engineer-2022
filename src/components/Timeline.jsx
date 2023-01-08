@@ -10,6 +10,7 @@ import Car from "./Car";
 import BTNToTheTop from "./BTNToTheTop";
 import { useNavigate } from "react-router-dom";
 
+
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 
