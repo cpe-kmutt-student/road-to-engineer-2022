@@ -6,6 +6,7 @@ const fetch = axios.create({
 
 fetch.interceptors.request.use(config => {
   config.headers['access-token'] = localStorage.getItem("user");
+  config.headers['API-KEY'] = import.meta.env.VITE_API_KEY;
   return config;
 });
 
