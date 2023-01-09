@@ -5,7 +5,7 @@ import { Estamp } from '../components/Estamp';
 import { Faq } from '../components/Faq';
 import { Maps } from '../components/Maps';
 import { Another } from '../components/Another';
-import { Footer } from '../components/Footer';
+import { OpenHouseFooter } from '../components/Footer';
 
 export const OpenHousePage = () => {
   return (
@@ -17,6 +17,7 @@ export const OpenHousePage = () => {
       <Another />
       <Faq />
       <Maps />
+      <OpenHouseFooter />
     </div>
   );
 }
