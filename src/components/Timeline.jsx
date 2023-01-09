@@ -8,7 +8,7 @@ import ElementTablet from './ElementTablet'
 import ElementMobile from "./ElementMobile";
 import Car from "./Car";
 import BTNToTheTop from "./BTNToTheTop";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -39,7 +39,6 @@ export default function useWindowDimensions() {
 }
 
 export const Timeline = () => {
-  const navigate = useNavigate();
   const { height, width } = useWindowDimensions();
   let varMaringin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? Math.min(((width-768)/62)*20+120,165) : width > 0 ? Math.min(((width-360)/30)*35+90,125) : 0
   let varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? Math.min(((width-768)/62)*2+23, 25) : width > 0 ? Math.min(((width-360)/30)*2+10,12) : 0
