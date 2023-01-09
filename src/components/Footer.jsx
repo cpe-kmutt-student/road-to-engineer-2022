@@ -79,7 +79,7 @@ export const Footer = () => {
             <img src={kmuttlogo} alt="kmuttlogo" className="h-20" />
             <img src={smoLogo} alt="smoLogo" className="h-20" />
           </div>
-          <div className="flex flex-col justify-center py-20 md:pb-0 text-white">
+          <div className="flex flex-col justify-center py-5 md:pb-0 text-white">
             <h2 className="text-[48px] md:text-7xl xl:text-8xl text-center font-bold pb-5 md:pb-10">Our Supporters</h2>
             <h3 className="text-[32px] md:text-4xl xl:text-5xl text-center">Sponsor & Partnership</h3>
             <div class="flex flex-wrap gap-4 justify-center mt-10 mx-10">
