@@ -1,3 +1,5 @@
+import { useAuth } from "../contexts/AuthContext";
+import { useState, useEffect } from "preact/hooks";
 import Road from "/image/road.svg";
 import Logo from "/image/loginopenhouse.svg";
 import Google from "/image/googlelogo.svg";
@@ -5,10 +7,28 @@ import { Email } from './input/EmailInput';
 import { Password } from './input/PasswordInput';
 import { Checkbox } from './input/CheckboxInput';
 import { Button } from "./input/Button";
-
-
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const { login, logout, status } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (status == "authenticated") {
+      navigate("/announcement");
+    }
+  }, [status])
+
+  const [signIn, setSignIn] = useState({
+    email: "",
+    password: "",
+  })
+
+  const handleChange = (e) => {
+    setSignIn({
+      ...signIn, [e.target.id]: e.target.value
+    })
+  }
 
   return (
     <>
@@ -19,7 +39,7 @@ export const Login = () => {
         <div className="fixed md:px-5 pt-16 m-0 w-screen h-screen flex justify-start items-end z-0">
           <img src={Road} alt="" className="object-cover md:object-contain object-bottom h-2/3" />
         </div>
-        
+
         {/* login card */}
         <div className="relative lg:absolute px-10 py-0 mb-10 md:mb-0 lg:py-24 w-full h-full flex justify-center lg:justify-end items-start lg:items-center z-20">
           <div className="bg-white h-fit w-full lg:w-1/3 rounded-xl p-10 flex flex-col shadow-lg shadow-black/50 text-gray-500">
@@ -27,10 +47,14 @@ export const Login = () => {
             <form>
               <div className="">
                 <div className="space-y-2 md:space-y-4 mb-5">
-                  <Email />
-                  <Password type="normal" />
+                  <Email onChange={handleChange} />
+                  <Password type="normal" onChange={handleChange} />
                   <Checkbox name="remember" label="Remember Me ?" />
-                  <Button text="LOGIN" type="1" />
+                  <Button text="LOGIN" type="1"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      login(signIn.email, signIn.password);
+                    }} />
                   <span className="w-full flex justify-end text-lg text-decorate-100">
                     <a href="#" className="hover:text-juicy-100/75">Forgot password ?</a>
                   </span>

@@ -1,4 +1,4 @@
-export const Radio = ({ group ,name, label }) => {
+export const Radio = ({ group ,name, label, checked }) => {
   return (
     <>
       <div className="w-fit z-20">
@@ -19,6 +19,7 @@ export const Radio = ({ group ,name, label }) => {
               focus:ring-offset-0
               checked:text-juicy-100"
             required
+            checked={checked}
           />
           <label className="align-bottom" htmlFor={name}>{label}</label>
         </div>

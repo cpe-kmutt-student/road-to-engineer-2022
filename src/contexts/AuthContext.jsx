@@ -1,6 +1,8 @@
 import { createContext } from "preact";
 import { useEffect, useState, useContext } from "preact/hooks";
 import { useNavigate } from "react-router-dom";
+import { encode,decode } from "js-base64";
+import Swal from "sweetalert2";
 import fetch from "../utils/fetchAxios";
 
 const AuthContext = createContext();
@@ -11,11 +13,8 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   
   const extractJwt = (token) => {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
+    const base64 = token.split('.')[1];
+    const jsonPayload = decode(base64)
     return JSON.parse(jsonPayload);
   }
 
@@ -31,16 +30,29 @@ export const AuthProvider = ({ children }) => {
             token
           } = response.data[0];
           localStorage.setItem("user", token);
-          localStorage.setItem("userinfo", btoa(JSON.stringify({ name, email, _id })));
+          localStorage.setItem("userinfo", encode(JSON.stringify({ name, email, _id })));
           setUser({ name, email, _id });
           setStatus("authenticated");
         } else {
           setUser(null);
           setStatus("unauthenticated")
         }
-    }).catch(() => {
-      navigate('/')
-    });
+      }).catch((error) => {
+        Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        }).fire({
+          icon: 'error',
+          title: error.message,
+        })
+      });
 
   }
 
@@ -49,19 +61,19 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("userinfo");
     setUser(null);
     setStatus("unauthenticated");
-    navigate('/');
+    navigate('/login');
   }
 
   useEffect(() => {
-    try{
+    try {
       const userToken = localStorage.getItem("user");
-      const userInfo = JSON.parse(atob(localStorage.getItem("userinfo") || "") || "{}");
+      const userInfo = JSON.parse(decode(localStorage.getItem("userinfo") || "") || "{}");
       if (userToken) {
         const jwt = extractJwt(userToken);
         if (jwt.exp < Date.now()) {
           setUser(userInfo);
           setStatus("authenticated");
-        }else {
+        } else {
           throw Error("Token expired");
         }
       } else {
@@ -71,7 +83,6 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       setStatus("unauthenticated");
     }
-    
   }, []);
 
   return (

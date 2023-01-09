@@ -18,6 +18,7 @@ module.exports = {
         'road-bg-pc': "url('/image/road-bg-pc.svg')",
         'road-bg-ipad': "url('/image/road-bg-ipad.svg')",
         'road-bg-mobile': "url('/image/road-bg-mobile.svg')",
+        'eng-bg': "url('/assets/Hero-Bg.svg')"
       },
       colors: {
         'bloodred': {
@@ -32,6 +33,7 @@ module.exports = {
         }
       }
     },
+
     
   },
   plugins: [
