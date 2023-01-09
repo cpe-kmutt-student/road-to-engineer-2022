@@ -1,4 +1,6 @@
 import { EventCard } from "./Another/EventCard";
+import concert from "/image/concert.svg";
+import food from "/image/food.svg";
 
 export const Another = () => {
   return (
@@ -8,13 +10,13 @@ export const Another = () => {
         <div className="flex flex-col justify-center items-center gap-y-6 md:flex-row md:gap-10 ">
           <EventCard
             title="Concert"
-            image="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-            detail="lorem ipsum sdfsd"
+            image={concert}
+            detail="Lorem ipsum dolor sit amet consectetur adipisicing."
           />
           <EventCard
             title="ซุ้มอาหาร"
-            image="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
-            detail="lorem ipsum sdfsd"
+            image={food}
+            detail="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum!"
           />
         </div>
       </div>
