@@ -26,7 +26,6 @@ img {
   font-family: 'db-heaventbold-cond-it';
   src: url('/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff2') format('woff2'),
        url('/fonts/db_heavent/db_heavent_bd_cond_it_v3.2.1-webfont.woff') format('woff');
-
   font-weight: normal;
   font-style: normal;
 }
@@ -45,4 +44,13 @@ img {
        url('/fonts/db_heavent/db_heavent_cond_v3.2.1-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+ol li {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+ol > li > ol > li {
+  margin-left: 1.5rem;
 }

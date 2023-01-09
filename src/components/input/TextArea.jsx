@@ -1,13 +1,13 @@
-export const Text = ({name, label, onChange, input, setInput, value}) => {
+export const TextArea = ({name, label, onChange, input, setInput, value}) => {
   return (
     <>
       <div className="w-full z-20">
         <label htmlFor={name} className="flex flex-col text-xl"> 
           {label}
-          <input  
-            type="text" 
+          <textarea  
             id={name} 
             name={name}
+            rows="4"
             onChange={(e)=>{
               onChange && onChange(e);
               input && setInput({...input, [name]: e.target.value});  
