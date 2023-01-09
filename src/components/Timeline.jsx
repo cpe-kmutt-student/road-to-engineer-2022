@@ -8,8 +8,7 @@ import ElementTablet from './ElementTablet'
 import ElementMobile from "./ElementMobile";
 import Car from "./Car";
 import BTNToTheTop from "./BTNToTheTop";
-import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -48,8 +47,7 @@ export const debounce = (fn, ms) => {
   };
 }
 
-export const Timeline = () => {
-  const navigate = useNavigate();
+export const Timeline = ({scrollref}) => {
   const { height, width } = useWindowDimensions();
   // const [dimensions, setDimension] = useState({height: window.innerHeight, width: window.innerWidth})
   // const width = dimensions.width
@@ -342,8 +340,8 @@ export const Timeline = () => {
   return (
     <>
       <BTNToTheTop/>
-      {/* <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[10000] block pointer-events-none"></div> */}
-      <div className="w-full h-full bg-contain bg-full bg-no-repeat md:bg-cover xl:bg-cover bg-road-bg-mobile md:bg-road-bg-ipad xl:bg-road-bg-pc">
+      <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[1000] mix-blend-screen hidden pointer-events-none"></div>
+      <div ref={scrollref} id="info-section" className="w-full h-full bg-contain bg-full bg-no-repeat md:bg-cover xl:bg-cover bg-road-bg-mobile md:bg-road-bg-ipad xl:bg-road-bg-pc">
         <div className="flex justify-center align-middle px-2 lg:px-10">
             <div className="object-center object-contain">
               <Car/>
@@ -368,7 +366,7 @@ export const Timeline = () => {
                 <p id="detail" className="text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[250px] md:max-w-md xl:max-w-xl">การแข่งขันเพื่อสนับสนุนการสร้างสรรค์และ ส่งเสริมการพัฒนาสิ่งประดิษฐ์ หรือผลงานวิจัย เชิงประยุกต์ทางด้านวิทยาศาสตร์ และเทคโนโลยี ที่ตอบสนองการใช้งานได้จริง !</p>
                 <button onClick={()=>{window.open("https://www.facebook.com/profile.php?id=100087709743668", "_blank")}} id="button" className="translate-x-14 md:translate-x-32 xl:translate-x-80 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">ติดตามข่าวสาร</button>
               </section>
-              <section id="section" className="flex-1 font-DB-Heavent" style={`margin-bottom: ${varMaringin}px`}>
+              <section id="section" className="flex-1 font-DB-Heavent" style={`margin-bottom: ${varMaringin+40}px`}>
                 <div id="wrapper" className="overflow-hidden relative">
                   <h2 id="header" className="text-bloodred-200 text-[32px] md:text-7xl xl:text-8xl font-bold whitespace-nowrap">การแข่งขันตอบปัญหาวิชาการ</h2>
                 </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useLayoutEffect } from "preact/hooks";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,7 +9,7 @@ const rightElement = [33, 35, 29, 25, 11, 15, 13]
 const leghtRighElement = [80, 120, 30, 80, 60, 120, 50]
 const location = ["RC", "PE_MCE", "CE", "ME", "EE", "TME", "CPE", "ENE", "ENV", "INC", "CHE"]
 
-const EventSection = () => {
+export const EventSection = () => {
   useLayoutEffect(() => {
     leftElement.forEach((id, index)=>{
         let element = `#box${id != 0 ? `_${id}` : ''}`
@@ -7186,5 +7185,3 @@ const EventSection = () => {
     </section>
   )
 }
-
-export default EventSection
