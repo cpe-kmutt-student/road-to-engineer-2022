@@ -65,7 +65,6 @@ export const Timeline = () => {
 
     let buttons = document.querySelectorAll("#button")
     buttons.forEach((button)=>{
-      // console.log(button)
       const hover = gsap.set("#shape", {
         duration: .5,
         display: "block",
@@ -278,7 +277,6 @@ export const Timeline = () => {
           duration: 1,
           opacity: 0,
         })
-
         gsap.to("#car", {
           scrollTrigger: {
             trigger: "#motionPathTablet",
