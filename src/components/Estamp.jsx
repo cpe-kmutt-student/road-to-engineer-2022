@@ -1,7 +1,7 @@
 export const Estamp = () => {
   return (
     <div className="section bg-juicy-100 relative flex flex-col justify-center">
-      <h1 className="section-title">กิจกรรม E-STAMP</h1>
+      <h1 className="text-center font-bold text-3xl md:text-5xl my-2 md:my-5">กิจกรรม E-STAMP</h1>
       <div className="flex flex-col md:flex-row justify-center items-center gap-10 pb-10">
         <img src="/assets/GiftBox.svg" className="w-20 md:w-32" alt="" />
         <p className="text-white text-center md:text-2xl">

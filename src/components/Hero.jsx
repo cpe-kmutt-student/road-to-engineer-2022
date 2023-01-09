@@ -29,7 +29,7 @@ export const Hero = () => {
               engineering open house 2023
             </p>
             <div className="pt-4">
-              <h1 className=" text-white text-2xl md:text-4xl font-semibold ">
+              <h1 className=" text-white text-5xl md:text-7xl font-semibold ">
                 19-21 มกราคม 2566
               </h1>
               <p className="text-white pt-2 text-xl font-semibold">
