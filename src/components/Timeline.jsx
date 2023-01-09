@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
@@ -40,27 +39,10 @@ export default function useWindowDimensions() {
 
 export const Timeline = () => {
   const { height, width } = useWindowDimensions();
-  let varMaringin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? Math.min(((width-768)/62)*20+120,165) : width > 0 ? Math.min(((width-360)/30)*35+90,125) : 0
-  let varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? Math.min(((width-768)/62)*2+23, 25) : width > 0 ? Math.min(((width-360)/30)*2+10,12) : 0
+  let varMaringin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? Math.min(((width-768)/62)*20+120,165) : width > 0 ? Math.min(((width-330)/60)*85+90,175) : 0
+  let varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? Math.min(((width-768)/62)*2+23, 25) : width > 0 ? Math.min(((width-360)/60)*2+10,12) : 0
+  let mobileMargin = width < 768 ? 40 : 0
   useLayoutEffect(() => {
-    document.body.addEventListener("mousemove", e =>{
-      var posx;
-      var posy;
-      if (!e) var e = window.event;
-      if (e.pageX || e.pageY) {
-        posx = e.pageX;
-        posy = e.pageY;
-      }
-      else if (e.clientX || e.clientY) {
-        posx = e.clientX + document.body.scrollLeft + document.getElementById("canvas").scrollLeft;
-        posy = e.clientY + document.body.scrollTop  + document.getElementById("canvas").scrollTop;
-      }
-
-      gsap.set("#shape", {
-        x: posx-30,
-        y: posy-50,
-      })
-    })
 
     let buttons = document.querySelectorAll("#button")
     buttons.forEach((button)=>{
@@ -76,11 +58,11 @@ export const Timeline = () => {
         paused: true
       })
       button.addEventListener("mouseleave", ()=>{
-        hover.reverse(!hover.reverse())
+        // hover.reverse(!hover.reverse())
         btnHover.reverse(!btnHover.reverse())
       })
       button.addEventListener("mouseenter", ()=>{
-        hover.play()
+        // hover.play()
         btnHover.play()
       })
     })

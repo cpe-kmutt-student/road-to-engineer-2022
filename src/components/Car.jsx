@@ -1,7 +1,7 @@
 const Car = () => {
   return (
     <>
-        <svg className='absolute w-14 md:w-32 xl:w-40 z-50' id="car" width="147" height="241" viewBox="0 0 147 241" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='absolute w-14 md:w-32 xl:w-40' id="car" width="147" height="241" viewBox="0 0 147 241" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_1133_2)">
             <g id="Group">
             <g id="Group_2">
