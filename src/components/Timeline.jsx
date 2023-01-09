@@ -8,9 +8,7 @@ import ElementTablet from './ElementTablet'
 import ElementMobile from "./ElementMobile";
 import Car from "./Car";
 import BTNToTheTop from "./BTNToTheTop";
-
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
-
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -39,36 +37,19 @@ export default function useWindowDimensions() {
 
 export const Timeline = () => {
   const { height, width } = useWindowDimensions();
-  let varMaringin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? Math.min(((width-768)/62)*20+120,165) : width > 0 ? Math.min(((width-360)/30)*35+90,125) : 0
-  let varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? Math.min(((width-768)/62)*2+23, 25) : width > 0 ? Math.min(((width-360)/30)*2+10,12) : 0
+  let varMaringin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? Math.min(((width-768)/62)*20+120,165) : width > 0 ? Math.min(((width-330)/60)*85+90,175) : 0
+  let varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? Math.min(((width-768)/62)*2+23, 25) : width > 0 ? Math.min(((width-360)/60)*2+10,12) : 0
+  let mobileMargin = width < 768 ? 40 : 0
   useLayoutEffect(() => {
-    document.body.addEventListener("mousemove", e =>{
-      var posx;
-      var posy;
-      if (!e) var e = window.event;
-      if (e.pageX || e.pageY) {
-        posx = e.pageX;
-        posy = e.pageY;
-      }
-      else if (e.clientX || e.clientY) {
-        posx = e.clientX + document.body.scrollLeft + document.getElementById("canvas").scrollLeft;
-        posy = e.clientY + document.body.scrollTop  + document.getElementById("canvas").scrollTop;
-      }
-
-      gsap.set("#shape", {
-        x: posx-30,
-        y: posy-50,
-      })
-    })
 
     let buttons = document.querySelectorAll("#button")
     buttons.forEach((button)=>{
       // console.log(button)
-      const hover = gsap.set("#shape", {
-        duration: .5,
-        display: "block",
-        paused: true
-      })
+      // const hover = gsap.set("#shape", {
+      //   duration: .5,
+      //   display: "block",
+      //   paused: true
+      // })
       const btnHover = gsap.to(button, {
         duration: .5,
         background: "#C12121",
@@ -76,11 +57,11 @@ export const Timeline = () => {
         paused: true
       })
       button.addEventListener("mouseleave", ()=>{
-        hover.reverse(!hover.reverse())
+        // hover.reverse(!hover.reverse())
         btnHover.reverse(!btnHover.reverse())
       })
       button.addEventListener("mouseenter", ()=>{
-        hover.play()
+        // hover.play()
         btnHover.play()
       })
     })
@@ -331,7 +312,7 @@ export const Timeline = () => {
   return (
     <>
       <BTNToTheTop/>
-      <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[1000] mix-blend-screen hidden pointer-events-none"></div>
+      {/* <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[10000] block pointer-events-none"></div> */}
       <div className="w-full h-full bg-contain bg-full bg-no-repeat md:bg-cover xl:bg-cover bg-road-bg-mobile md:bg-road-bg-ipad xl:bg-road-bg-pc">
         <div className="flex justify-center align-middle px-2 lg:px-10">
             <div className="object-center object-contain">
@@ -346,32 +327,32 @@ export const Timeline = () => {
                   <h2 id="header" className="text-bloodred-200 text-[48px] md:text-7xl xl:text-8xl font-bold">Open House</h2>
                 </div>
                 <hr id="divider" className="mt-0.5 mb-3.5 border-t-[6px] border-bloodred-100 w-20 md:w-40 xl:w-80"/>
-                <p id="detail" className="text-2xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">กิจกรรมที่เปิดให้นักเรียน คุณครู และผู้ปกครอง สัมผัสบรรยากาศ รับรู้ถึงสิ่งอำนวยความสะดวก ของคณะฯ และทำกิจกรรมร่วมกันกับนักศึกษาใน ภาควิชาต่าง ๆ</p>
-                <button id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-0 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">Open House</button>
+                <p id="detail" className="text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">กิจกรรมที่เปิดให้นักเรียน คุณครู และผู้ปกครอง สัมผัสบรรยากาศ รับรู้ถึงสิ่งอำนวยความสะดวก ของคณะฯ และทำกิจกรรมร่วมกันกับนักศึกษาใน ภาควิชาต่าง ๆ</p>
+                <button onClick={()=>{window.open("", "_blank")}} id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-0 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">เว็บไซต์กิจกรรม</button>
               </section>
-              <section id="section" className="flex-1 font-DB-Heavent" style={`margin-bottom: ${varMaringin+40}px`}>
+              <section id="section" className="flex-1 font-DB-Heavent" style={`margin-bottom: ${varMaringin+mobileMargin}px`}>
                 <div id="wrapper" className="overflow-hidden relative">
                   <h2 id="header" className="text-bloodred-200 text-[48px] md:text-7xl xl:text-8xl font-bold">การแข่งขันนวัตกรรม</h2>
                 </div>
                 <hr id="divider" className="mt-0.5 mb-3.5 border-t-[6px] border-bloodred-100 w-20 md:w-40 xl:w-80"/>
-                <p id="detail" className="text-2xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">การแข่งขันเพื่อสนับสนุนการสร้างสรรค์และ ส่งเสริมการพัฒนาสิ่งประดิษฐ์ หรือผลงานวิจัย เชิงประยุกต์ทางด้านวิทยาศาสตร์ และเทคโนโลยี ที่ตอบสนองการใช้งานได้จริง !</p>
-                <button id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-80 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">Learn More</button>
+                <p id="detail" className="text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">การแข่งขันเพื่อสนับสนุนการสร้างสรรค์และ ส่งเสริมการพัฒนาสิ่งประดิษฐ์ หรือผลงานวิจัย เชิงประยุกต์ทางด้านวิทยาศาสตร์ และเทคโนโลยี ที่ตอบสนองการใช้งานได้จริง !</p>
+                <button onClick={()=>{window.open("https://www.facebook.com/profile.php?id=100087709743668", "_blank")}} id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-80 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">ติดตามข่าวสาร</button>
               </section>
               <section id="section" className="flex-1 font-DB-Heavent" style={`margin-bottom: ${varMaringin}px`}>
                 <div id="wrapper" className="overflow-hidden relative">
                   <h2 id="header" className="text-bloodred-200 text-[38px] md:text-7xl xl:text-8xl font-bold whitespace-nowrap">การแข่งขันตอบปัญหาวิชาการ</h2>
                 </div>
                 <hr id="divider" className="mt-0.5 mb-3.5 border-t-[6px] border-bloodred-100 w-20 md:w-40 xl:w-80"/>
-                <p id="detail" className="text-2xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">การแข่งขันที่ทดสอบความรู้ความสามารถทางด้านวิศวกรรมศาสตร์ วิทยาศาสตร์ และเทคโนโลยี ให้เกิดทักษะและตระหนักถึงองค์ความรู้ที่สามารถ นำไปใช้ให้เกิดประโยชน์ต่อไปได้ !</p>
-                <button id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-0 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">Learn More</button>
+                <p id="detail" className="text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">การแข่งขันที่ทดสอบความรู้ความสามารถทางด้านวิศวกรรมศาสตร์ วิทยาศาสตร์ และเทคโนโลยี ให้เกิดทักษะและตระหนักถึงองค์ความรู้ที่สามารถ นำไปใช้ให้เกิดประโยชน์ต่อไปได้ !</p>
+                <button onClick={()=>{window.open("https://www.facebook.com/profile.php?id=100087709743668", "_blank")}} id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-0 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">ติดตามข่าวสาร</button>
               </section>
               <section id="section" className="flex-1 font-DB-Heavent">
                 <div id="wrapper" className="overflow-hidden relative">
                   <h2 id="header" className="text-bloodred-200 text-[48px] md:text-7xl xl:text-8xl font-bold">Bangmod Hackathon</h2>
                 </div>
                 <hr id="divider" className="mt-0.5 mb-3.5 border-t-[6px] border-bloodred-100 w-20 md:w-40 xl:w-80"/>
-                <p id="detail" className="text-2xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">การแข่งขันเพื่อสนับสนุนการแก้ไขปัญหาด้วยการ เขียนโปรแกรมทางคอมพิวเตอร์ผ่านภาษาซี และ ส่งเสริมให้ได้มีโอกาสพัฒนาศักยภาพ การคิด วิเคราะห์ และการลงมือทำจริง !</p>
-                <button id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-80 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">Hackathon</button>
+                <p id="detail" className="text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[292px] md:max-w-md xl:max-w-xl">การแข่งขันเพื่อสนับสนุนการแก้ไขปัญหาด้วยการ เขียนโปรแกรมทางคอมพิวเตอร์ผ่านภาษาซี และ ส่งเสริมให้ได้มีโอกาสพัฒนาศักยภาพ การคิด วิเคราะห์ และการลงมือทำจริง !</p>
+                <button onClick={()=>{window.open("https://bangmodhackathon.com/", "_blank")}} id="button" className="translate-x-16 md:translate-x-32 xl:translate-x-80 shadow-[inset_5px_5px_5px_0_rgba(0,0,0,0.4)] border-[5.5px] md:border-[8px] xl:border-[12px] border-bloodred-200 font-bold rounded-full px-4 md:px-8 xl:px-16 text-[28px] md:text-[32px] xl:text-[40px] text-bloodred-200 bg-white">เว็บไซต์กิจกรรม</button>
               </section>
             </div>
         </div>
