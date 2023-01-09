@@ -55,15 +55,12 @@ export const Login = () => {
                       e.preventDefault();
                       login(signIn.email, signIn.password);
                     }} />
-                  <span className="w-full flex justify-end text-lg text-decorate-100">
-                    <a href="#" className="hover:text-juicy-100/75">Forgot password ?</a>
-                  </span>
-                  <div className="divider">OR</div>
+                  {/* <div className="divider">OR</div> */}
                 </div>
                 <div className="pt-8" />
               </div>
             </form>
-            <Button logo={Google} text= {` SIGN IN BY GOOGLE `} type="2" />
+            {/* <Button logo={Google} text= {` SIGN IN BY GOOGLE `} type="2" /> */}
             <span className="w-full flex justify-center text-lg text-decorate-100 space-x-1 mt-2">
               <p>Need an account? </p>
               <a href="/register" className="hover:text-juicy-100/75 underline">SIGN UP</a>
