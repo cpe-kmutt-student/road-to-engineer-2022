@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }) => {
           setStatus("unauthenticated")
         }
       }).catch((error) => {
-        console.log(error)
         Swal.mixin({
           toast: true,
           position: 'top-end',

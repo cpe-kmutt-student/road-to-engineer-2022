@@ -13,10 +13,6 @@ export const Help = () => {
     problem: '',
   });
 
-  // useEffect(() => {
-  //   console.log(helpInput);
-  // }, [helpInput]);
-
   const modal = useRef();
 
   const closeModal = () =>{
@@ -30,7 +26,6 @@ export const Help = () => {
   const handleSubmit = async (e) => {
     fetch.post('/report', helpInput)
       .then((res) => {
-        console.log(res);
         Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -53,7 +48,6 @@ export const Help = () => {
         closeModal();
       })
       .catch((error) => {
-        console.error(error);
         Swal.mixin({
           toast: true,
           position: 'top-end',

@@ -5,10 +5,6 @@ export const Dropdown = ({ name, label, option, onChange, input, setInput, value
   const value_option = Object.keys(option);
   const [optionsState, setOption] = useState(value);
 
-  useEffect(()=>{
-    console.log(value);
-  }, [optionsState])
-
   return (
 
     <>

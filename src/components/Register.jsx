@@ -61,10 +61,6 @@ export const BasicRegister = () => {
 
   const { login } = useAuth();
 
-  useEffect(() => {
-    console.log(input);
-  }, [input]);
-
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
   }
@@ -86,7 +82,6 @@ export const BasicRegister = () => {
           icon: 'success',
           title: 'Signed Up successfully !'
         })
-        // console.log(res);
         login(input.email, input.password)
         navigate('/login');
       })
@@ -105,7 +100,6 @@ export const BasicRegister = () => {
           icon: 'error',
           title: 'Email has already used !'
         })
-        console.error(error);
         setInput({
           ...input,
           email: "",
