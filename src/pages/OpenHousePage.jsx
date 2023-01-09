@@ -13,7 +13,7 @@ export const OpenHousePage = () => {
       <Hero />
       <Schedule />
       <EventSection />
-      <Estamp />
+      {/* <Estamp /> */}
       <Another />
       <Faq />
       <Maps />

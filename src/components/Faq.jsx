@@ -4,7 +4,7 @@ export const Faq = () => {
   return (
     <>
       <div className="section bg-juicy-100">
-        <h1 className="section-title">FAQ's</h1>
+        <h1 className="text-center font-bold text-3xl md:text-5xl my-2 md:my-5">FAQ's</h1>
         <div className="mx-auto w-full max-w-lg bg-white rounded-2xl md:p-6">
           {allQuestion.map((q) => {
             return (

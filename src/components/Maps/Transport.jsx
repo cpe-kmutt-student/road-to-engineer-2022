@@ -12,12 +12,12 @@ export const Transport = () => {
     { name: "รถยนต์", component: <Car /> },
   ];
   return (
-    <div className="basis-1/2 bg-white border border-juicy-100 w-full h-full sm:h-[30rem] lg:h-80 min-h-max rounded-2xl">
-      <div className="tab w-full flex-nowrap px-0 mx-0">
+    <div className="basis-1/2 bg-white border border-t-0 border-juicy-100 min-w-fit md:min-w-0 w-full h-full sm:h-[30rem] min-h-max rounded-2xl">
+      <div className="tab bg-juicy-100 pt-5 rounded-xl min-w-fit w-full flex-nowrap px-0 mx-0">
         {tabList.map((t, id) => {
           return (
             <a
-              class={`tab tab-lifted w-full rounded-t-2xl text-white text-xs md:text-lg bg-juicy-100 font-semibold  ${
+              class={`tab tab-lifted w-full rounded-t-2xl text-white text-xl md:text-2xl bg-juicy-100  ${
                 id == index ? "tab-active text-juicy-100" : ""
               }`}
               onClick={() => setIndex(id)}
@@ -28,7 +28,7 @@ export const Transport = () => {
         })}
       </div>
 
-      <div className="text-lg p-6">
+      <div className="text-lg lg:text-xl p-6">
         <p>{tabList[index].component}</p>
       </div>
     </div>
