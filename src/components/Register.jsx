@@ -121,6 +121,7 @@ export const BasicRegister = () => {
       input.phone.length &&
       input.password.length &&
       input.passwordConfirmation.length &&
+      input.password == input.passwordConfirmation &&
       input.accountType.length &&
       (isStudent ? input.educationLevel.length && input.schoolName.length : true)
     ) {
