@@ -8,8 +8,7 @@ import ElementTablet from './ElementTablet'
 import ElementMobile from "./ElementMobile";
 import Car from "./Car";
 import BTNToTheTop from "./BTNToTheTop";
-import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 ScrollTrigger.normalizeScroll(true)
@@ -50,8 +49,7 @@ export const debounce = (fn, ms) => {
   };
 }
 
-export const Timeline = () => {
-  const navigate = useNavigate();
+export const Timeline = ({scrollref}) => {
   const { height, width } = useWindowDimensions();
   // const [dimensions, setDimension] = useState({height: window.innerHeight, width: window.innerWidth})
   // const width = dimensions.width
@@ -362,8 +360,8 @@ export const Timeline = () => {
   return (
     <>
       <BTNToTheTop/>
-      {/* <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[10000] block pointer-events-none"></div> */}
-      <div className="w-full h-full bg-contain bg-full bg-no-repeat md:bg-cover xl:bg-cover bg-road-bg-mobile md:bg-road-bg-ipad xl:bg-road-bg-pc">
+      <div id="shape" className="rounded-full absolute w-20 h-20 bg-red-900 z-[1000] mix-blend-screen hidden pointer-events-none"></div>
+      <div ref={scrollref} id="info-section" className="w-full h-full bg-contain bg-full bg-no-repeat md:bg-cover xl:bg-cover bg-road-bg-mobile md:bg-road-bg-ipad xl:bg-road-bg-pc">
         <div className="flex justify-center align-middle px-2 lg:px-10">
             <div className="object-center object-contain">
               <Car/>
