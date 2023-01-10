@@ -81,7 +81,7 @@ export const Timeline = ({scrollref}) => {
     header = "text-bloodred-200 text-[42px] md:text-7xl xl:text-8xl font-bold"
     header2 = "text-bloodred-200 text-[32px] md:text-6xl xl:text-7xl font-bold"
   }else{
-    varMargin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? 165 : width > 0 ? Math.min(((width-320)/60)*90+60,150) : 0
+    varMargin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? 165 : width > 0 ? Math.min(((width-320)/60)*90+60,155) : 0
     varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? 25 : width > 0 ? Math.min(((width-320)/60)*3.5+7.5,11) : 0
     mobileMargin = width >= 1280 ? 20 : width < 768 ? width >= 375 ? Math.min(((width-375)/55)*60,60) : Math.min(((width)/55)*60,60) : 0
     para = "text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[230px] md:max-w-md xl:max-w-xl"
