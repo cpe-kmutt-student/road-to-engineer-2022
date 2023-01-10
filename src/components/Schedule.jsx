@@ -40,7 +40,7 @@ const ScheduleTable = ({schedules}) =>{
 export const Schedule = () => {
   const [scheduleId, setScheduleId] = useState(0)
   return (
-    <div className="bg-black py-8 p-2 sm:p-8 flex flex-col justify-center">
+    <div id="workshop" className="bg-black py-8 p-2 sm:p-8 flex flex-col justify-center">
       <p className="text-juicy-100 font-bold text-3xl md:text-5xl pb-4 text-white text-center mb-2">กิจกรรม Workshop <br /> ของแต่ละภาควิชา</p>
       <div className="container mx-auto max-w-5xl">
         <div className="flex flex-col gap-2 sm:gap-8 sm:flex-row">

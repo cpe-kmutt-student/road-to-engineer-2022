@@ -6,10 +6,12 @@ import { Faq } from '../components/Faq';
 import { Maps } from '../components/Maps';
 import { Another } from '../components/Another';
 import { OpenHouseFooter } from '../components/Footer';
+import { Navbar } from '../components/Navbar';
 
 export const OpenHousePage = () => {
   return (
-    <div>
+    <>
+      <Navbar />
       <Hero />
       <Schedule />
       <EventSection />
@@ -18,6 +20,6 @@ export const OpenHousePage = () => {
       <Faq />
       <Maps />
       <OpenHouseFooter />
-    </div>
+    </>
   );
 }

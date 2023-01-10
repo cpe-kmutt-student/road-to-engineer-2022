@@ -5,7 +5,7 @@ import heroBg from "/assets/Hero-Bg.svg";
 export const Hero = () => {
   const navigate = useNavigate();
   return (
-    <div className="
+    <div id="hero" className="
       relative
       h-[110vh] 
       md:h-[120vh] 
