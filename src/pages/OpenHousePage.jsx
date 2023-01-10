@@ -11,7 +11,7 @@ import { Navbar } from '../components/Navbar';
 export const OpenHousePage = () => {
   return (
     <>
-      <Navbar />
+      <Navbar place="openhouse" />
       <Hero />
       <Schedule />
       <EventSection />

@@ -15,6 +15,7 @@ export const AnnouncementPage = () => {
 
     return (
         <div className="relative bg-juicy-200 w-screen min-h-screen h-fit overflow-hidden">
+            <Navbar place="annoucement" />
             <BgRegister />
             <RegisterCard title="Announcement" >
                 <p className='text-center text-3xl md:text-5xl leading-loose'>
