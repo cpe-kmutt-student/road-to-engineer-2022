@@ -11,7 +11,7 @@ import BTNToTheTop from "./BTNToTheTop";
 import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
-ScrollTrigger.normalizeScroll(true)
+// ScrollTrigger.normalizeScroll(true)
 ScrollTrigger.config({ ignoreMobileResize: true})
 
 function getWindowDimensions() {
