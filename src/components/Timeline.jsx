@@ -40,11 +40,11 @@ export default function useWindowDimensions() {
 }
 export const debounce = (fn, ms) => {
   let timer
-  return _ => {
+  return (...args) => {
     clearTimeout(timer)
     timer = setTimeout(_=>{
       timer = null
-      fn.apply(this, arguments)
+      fn.apply(this,args)
     }, ms)
   };
 }
