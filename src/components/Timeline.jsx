@@ -74,12 +74,12 @@ export const Timeline = ({scrollref}) => {
   let header
   let header2
   if(!isSafari){
-    varMargin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? 165 : width > 0 ? Math.min(((width-320)/60)*90+60,150) : 0
+    varMargin = width >= 1280 ? Math.min((((width-1280)/148)*55)+175, 235): width >= 768 ? 165 : width > 0 ? Math.min(((width-320)/60)*90+60,150) : 0
     varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? 25 : width > 0 ? Math.min(((width-320)/60)*2+10,12) : 0
     mobileMargin = width < 768 ? 60 : 0
     para = "text-xl md:text-3xl xl:text-4xl mb-2.5 max-w-[250px] md:max-w-md xl:max-w-xl"
     header = "text-bloodred-200 text-[42px] md:text-7xl xl:text-8xl font-bold"
-    header2 = "text-bloodred-200 text-[32px] md:text-7xl xl:text-8xl font-bold"
+    header2 = "text-bloodred-200 text-[32px] md:text-6xl xl:text-7xl font-bold"
   }else{
     varMargin = width >= 1280 ? Math.min((((width-1280)/148)*55)+170, 225): width >= 768 ? 165 : width > 0 ? Math.min(((width-320)/60)*90+60,150) : 0
     varPadding = width >= 1280 ? Math.min((((width-1280)/148)*3)+11, 14): width >= 768 ? 25 : width > 0 ? Math.min(((width-320)/60)*3.5+7.5,11) : 0
