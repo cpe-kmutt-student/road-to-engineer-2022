@@ -1,24 +1,82 @@
 import { useLayoutEffect } from "preact/hooks";
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
 gsap.registerPlugin(ScrollTrigger);
 const leftElement = [37, 39, 41, 5, 43, 31, 27, 0, 3, 23, 17, 19, 21, 45, 46]
 const lengthLeftElement = [60, 140, 30, 50, 30, 130, 80, 20, 130, 15, 40, 20, 70, 20, 80]
 const rightElement = [33, 35, 29, 25, 11, 15, 13]
 const lengthRightElement = [20, 60, 30, 100, 80, 20, 80]
 const location = ["RC", "PE_MCE", "CE", "ME", "EE", "TME", "CPE", "CHE", "ENE", "ENV", "INC"]
+const detail = {
+    CE: {
+        reg: "หน้าบริเวณซุ้มส่วนภาค",
+        assem: "หน้าบริเวณซุ้มส่วนภาค"
+    },
+    ME: {
+        reg: "ลานหน้าตีกภาควิชาเครื่องกล",
+        assem: "ลานหน้าตีกภาควิชาเครื่องกล"
+    },
+    PE_MCE: {
+        reg: "",
+        assem: ""
+    },
+    EE: {
+        reg: "",
+        assem: ""
+    },
+    ENE: {
+        reg: "ชั้น 9 ตึก CB4",
+        assem: "ชั้น 1 ตึก CB4"
+    },
+    TME: {
+        reg: "ซุ้มส่วนถาค",
+        assem: "ซุ้มส่วนถาค"
+    },
+    ENV: {
+        reg: "ซุ้มส่วนถาค",
+        assem: "ซุ้มส่วนถาค"
+    },
+    CPE: {
+        reg: "ตึกแดงชั้น 10",
+        assem: "ตึกแดงชั้น"
+    },
+    INC: {
+        reg: "CB4 ชั้น 6",
+        assem: "CB4 ชั้น 6"
+    },
+    CHE: {
+        reg: "หน้าตึกภาคเคมี",
+        assem: "หน้าตึกภาคเคมี"
+    },
+} 
+
+const infomation = (id) => {
+    MySwal.fire({
+        showCloseButton: true,
+        position: 'center',
+        showConfirmButton: false,
+        customClass: {
+            closeButton: "text-juicy-100",
+            popup: "h-40"
+        },
+        html: 
+        '<table class="flex justify-center border-collapse">'+
+        '<tr class="text-xl" ><th class="border-2 px-10">ช่องทางลงทะเบียน walk-in มีไหม/ที่ไหน</th><th class="border-2 px-10">รวมพล ที่ไหน</th></tr>'+
+        `<tr><td>${detail[id].reg}</td><td>${detail[id].assem}</td></tr>`+
+        '</table>'
+    })
+}
 
 const EventSection = () => {
     useLayoutEffect(() => {
         location.forEach(id=>{
             let element = `#${id}_location`
             const l = document.querySelector(element)
-            let hover = gsap.to(l, {
-                paused: true,
-                duration: 0.4,
-                y:-20,
-                scale: 1.05,
-            })
             gsap.from(element, {
                 scrollTrigger: {
                     trigger: element, 
@@ -28,12 +86,22 @@ const EventSection = () => {
                 opacity: 0,
                 y: 100,
             })
-            l.addEventListener("mouseenter", ()=>{
-                hover.play()
+            let hover = gsap.to(l, {
+                paused: true,
+                duration: 0.4,
+                scale: 1.05,
             })
-            l.addEventListener("mouseleave", ()=>{
-                hover.resverse(hover.reverse())
-            })
+            if (id != "RC"){
+                l.addEventListener("mouseenter", ()=>{
+                    hover.play()
+                })
+                l.addEventListener("mouseleave", ()=>{
+                    hover.resverse(hover.reverse())
+                })
+                l.addEventListener("click", ()=>{
+                    infomation(id)
+                })
+            }
             
 
         })
@@ -5571,7 +5639,7 @@ const EventSection = () => {
         </g>
         </g>
         <g id="Location">
-        <g id="RC_location" className="cursor-pointer">
+        <g id="RC_location" className="">
         <g id="RC location_2">
         <ellipse id="Ellipse 10" cx="776.598" cy="2596.07" rx="38.1157" ry="8.86411" fill="#242323" fill-opacity="0.8"/>
         <g id="Group 37">
