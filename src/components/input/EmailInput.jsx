@@ -1,13 +1,17 @@
-export const Email = () => {
+export const Email = ({ onChange, value }) => {
   return (
     <>
       <div className="w-full z-20">
         <label htmlFor="email" className="flex flex-col text-xl"> 
-          Email
+           <span>
+            Email <span className='text-bloodred-100'>*</span>
+           </span>
           <input  
             type="email" 
             id="email" 
             name="email" 
+            onChange={onChange}
+            value={value}
             className="
               form-input
               mt-1
