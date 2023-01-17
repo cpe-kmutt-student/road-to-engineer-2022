@@ -25,7 +25,8 @@ export const TopSection = ({ onClickNext }) => {
               />
               <ArrowDownButton
                 onClick={onClickNext}
-                label="Read More"
+                label="กำหนดการณ์"
+                hiddenArrow={true}  
               />
             </div>
         </div>
