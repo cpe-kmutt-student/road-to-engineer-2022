@@ -1,6 +1,9 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState, useReducer } from 'preact/hooks';
+import { useAuth } from '../../contexts/AuthContext';
+import fetch from '../../utils/fetchAxios';
 
 export const FooterEstamp = () => {
+  const { status, user } = useAuth();
   const [rulesep, setRulesep] = useState({
     central: {
       name: "central",
@@ -32,6 +35,27 @@ export const FooterEstamp = () => {
       "case2": [rulesep.central, rulesep.workshop]
     });
 
+  useEffect(() => {
+    if (status == 'authenticated') {
+      fetch.post('/stamp',{
+        _id:user._id
+      }).then((res) => {
+        const central = res.data?.stamp.filter((e) => 
+          e.catagory === "department_stamp"
+        ).filter((e) => 
+          e.name.split("_")[0] === "central"
+        ).filter((e) => e.done).length;
+        const exhibition = res.data?.stamp.filter((e) =>
+          e.catagory === "special_stamp"
+        ).filter((e) => e.done).length;
+        const workshop = res.data?.stamp.filter((e) =>
+          e.catagory === "workshop_stamp"
+        ).filter((e) => e.done).length;
+        
+        console.log(central,exhibition,workshop);
+      })
+    }
+  },[status]);
   return (
     <div>
       <img src="/image/triangle.svg" alt="triangle" className="object-fill w-screen h-8" />
@@ -40,7 +64,7 @@ export const FooterEstamp = () => {
           <div>
             <h1 className="text-3xl text-center font-bold py-4">เงื่อนไขการรับของที่ระลึก</h1>
             <div className='grid grid-cols-8 text-xl md:text-2xl'>
-              {rulecheck.case1.map((e) => {
+              {rulecheck?.case1?.map((e) => {
                 return (
                   <>
                     <label htmlFor={e.name} className="col-span-6">{e.label}</label>
@@ -64,7 +88,7 @@ export const FooterEstamp = () => {
             </div>
             <div className="divider before:bg-white after:bg-white mx-3=4">หรือ</div>
             <div className='grid grid-cols-8 gap-2 text-xl'>
-              {rulecheck.case2.map((e) => {
+              {rulecheck?.case2?.map((e) => {
                 return (
                   <>
                     <label htmlFor={e.name} className="col-span-6">{e.label}</label>
