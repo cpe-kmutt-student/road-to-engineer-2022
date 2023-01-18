@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'preact/hooks';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 import { useAuth } from '../../contexts/AuthContext';
 import fetch from '../../utils/fetchAxios';
 
@@ -29,11 +29,64 @@ export const FooterEstamp = () => {
   }
   )
 
-  const [rulecheck, setRuleCheck] = useState(
-    {
-      "case1": [rulesep.central, rulesep.exhibition],
-      "case2": [rulesep.central, rulesep.workshop]
-    });
+  const [data, setData] = useState(null)
+
+  useEffect(() =>{
+    if(status == 'authenticated')
+    fetch.post('/stamp', user).then(
+      (res)=>{
+        setData(res.data);
+      }
+    )
+  }, [status])
+
+  useEffect(() => {
+    
+    let dummy = {
+      central: {
+        ...rulesep.central,
+        collect: data?.stamp.filter((e)=>
+          e.name === "central_norm"
+        ).filter((e)=>
+          e.done === true
+        ).length,
+      },
+      exhibition: {
+        ...rulesep.exhibition,
+        collect: data?.stamp.filter((e)=>
+          (e.catagory === "department_stamp" && (e.name !== "central_norm")) || e.catagory === "special_stamp"
+        ).filter((e)=>
+          e.done === true
+        ).length,
+      },
+      workshop: {
+        ...rulesep.workshop,
+        collect: data?.stamp.filter((e)=>
+          e.catagory === "workshop_stamp"
+        ).filter((e)=>
+          e.done === true
+        ).length,
+      },
+    }
+
+    dummy = {
+      central: {
+        ...dummy.central,
+        check: dummy.central.collect >= dummy.central.rule
+      },
+      exhibition: {
+        ...dummy.exhibition,
+        check: dummy.exhibition.collect >= dummy.exhibition.rule
+      },
+      workshop: {
+        ...dummy.workshop,
+        check: dummy.workshop.collect >= dummy.workshop.rule
+      },
+    }
+    setRulesep(dummy)
+
+  
+  }, [status, data])
 
   useEffect(() => {
     if (status == 'authenticated') {
@@ -64,13 +117,13 @@ export const FooterEstamp = () => {
           <div>
             <h1 className="text-3xl text-center font-bold py-4">เงื่อนไขการรับของที่ระลึก</h1>
             <div className='grid grid-cols-8 text-xl md:text-2xl'>
-              {rulecheck?.case1?.map((e) => {
+              { [rulesep.central, rulesep.exhibition].map((e) => {
                 return (
                   <>
                     <label htmlFor={e.name} className="col-span-6">{e.label}</label>
                     <p>{`${e.collect} / ${e.rule}`}</p>
-                    <input 
-                      type="checkbox" 
+                    <input
+                      type="checkbox"
                       className="justify-self-end h-6 w-6 self-center
                         form-checkbox 
                         rounded
@@ -88,13 +141,13 @@ export const FooterEstamp = () => {
             </div>
             <div className="divider before:bg-white after:bg-white mx-3=4">หรือ</div>
             <div className='grid grid-cols-8 gap-2 text-xl'>
-              {rulecheck?.case2?.map((e) => {
+              { [rulesep.central, rulesep.workshop].map((e) => {
                 return (
                   <>
                     <label htmlFor={e.name} className="col-span-6">{e.label}</label>
                     <p>{`${e.collect} / ${e.rule}`}</p>
-                    <input 
-                      type="checkbox" 
+                    <input
+                      type="checkbox"
                       className="justify-self-end h-6 w-6 self-center
                         form-checkbox 
                         rounded
@@ -110,7 +163,7 @@ export const FooterEstamp = () => {
               })}
             </div>
             <div className="text-juicy-100 text-2xl text-center pt-4">สามารถรับของที่ระลึกได้ที่จุดลงทะเบียน ใต้อาคารเรียนรวม 4</div>
-          </div>  
+          </div>
         </div>
       </div>
     </div>

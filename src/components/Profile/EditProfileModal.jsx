@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "preact/hooks";
+import Swal from "sweetalert2";
 import { useAuth } from "../../contexts/AuthContext";
+import fetch from "../../utils/fetchAxios";
 
 const TextInput = ({
   name,
@@ -102,8 +104,20 @@ export const EditProfileModal = ({ user }) => {
   };
 
   const handleSubmit = () => {
-    console.log("submit to api, logout when submit successful");
-    console.log(input);
+    if(input.firstname.length && input.lastname.length && input.phone.length)
+    fetch.post('/edit_account',input).then((res) => {
+      if (res.status == 200){
+        Swal.fire({
+          title:"แก้ไขสำเร็จ",
+          html:"กรุณาเข้าสู่ระบบอีกครั้ง",
+          icon:'success',
+          timer: 1000,
+          showConfirmButton: false
+        }).then(()=> {
+          logout()
+        })
+      }
+    })
   };
 
   const handleReset = () => {
@@ -146,10 +160,12 @@ export const EditProfileModal = ({ user }) => {
             <NameDetail key="namedetail" label="Name" img="/image/person.svg" firstname={input.firstname} lastname={input.lastname} handleChange={handleChange}/>
             <ProfileDetail key="maildetail" label="Email" img="/image/mail.svg" disabled={true} value={input.email} handleChange={handleChange}/>
             <ProfileDetail key="phonedetail" label="Phone" img="/image/phone.svg" value={input.phone} handleChange={handleChange}/>
-            {user.accountType == "students" && <><ProfileDetail option={studentGrade} type={1} key="educationlevel" label="Education Level" state_name={"educationLevel"} value={input.educationLevel} handleChange={handleChange}/>
-            <ProfileDetail key="schoolname" label="School" state_name="schoolName"  value={input.schoolName} handleChange={handleChange}/></> }
+            {user.accountType == "students" && <>
+            <ProfileDetail option={studentGrade} type={1} key="educationlevel" label="Education Level" state_name={"educationLevel"} value={input.educationLevel} handleChange={handleChange}/>
+            <ProfileDetail key="schoolname" label="School" state_name="schoolName"  value={input.schoolName} handleChange={handleChange}/>
+            </> }
           </div>
-
+          <div className="text-xl text-center">เมื่อกดยืนยันแล้วกรุณาเข้าระบบอีกครั้ง</div>
           <div className="flex w-full gap-x-6 ">
             <button
               className="w-full text-white shadow-lg shadow-black/25 font-bold text-lg md:text-3xl bg-juicy-100 rounded-xl py-0.5"

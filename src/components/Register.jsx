@@ -85,8 +85,8 @@ export const BasicRegister = () => {
           title: 'Signed Up successfully !'
         })
         login(input.email, input.password)
-        if(type) navigate(type+"/"+(token ? token : ""));
-        else navigate("/announcement");
+        if(type) navigate("/"+type+"/"+(token ? token : ""));
+        else navigate("/profile");
       })
       .catch((error) => {
         Swal.mixin({

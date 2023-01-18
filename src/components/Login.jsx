@@ -16,8 +16,8 @@ export const Login = () => {
 
   useEffect(() => {
     if (status == "authenticated") {
-      if(type) navigate(type+"/"+(token ? token : ""));
-      else navigate("/announcement");
+      if(type) navigate("/"+type+"/"+(token ? token : ""));
+      else navigate("/profile");
     }
   }, [status])
 
@@ -35,7 +35,7 @@ export const Login = () => {
   return (
     <>
       <div className="relative flex flex-col w-screen h-screen bg-juicy-200 overflow-x-hidden md:overflow-hidden">
-        <div className="flex lg:absolute w-full p-2 my-5 lg:p-16 h-fit lg:h-full justify-center lg:justify-start items-start z-10">
+        <div className="flex lg:absolute w-full p-2 my-5 pt-10 lg:p-16 h-fit lg:h-full justify-center lg:justify-start items-start z-10">
           <img src={Logo} alt="" className="h-full lg:h-1/3 object-contain object-center scale-75 lg:scale-90" />
         </div>
         <div className="fixed md:px-5 pt-16 m-0 w-screen h-screen flex justify-start items-end z-0">
