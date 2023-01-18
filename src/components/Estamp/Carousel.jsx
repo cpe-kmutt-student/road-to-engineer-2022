@@ -3,13 +3,15 @@ import { allStampBox } from "./schema/allStampsBox"
 import { StampSection } from './StampSection';
 import { RuleSection } from './RuleSection';
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
+import withReactContent from 'sweetalert2-react-content';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import fetch from '../../utils/fetchAxios';
 
 export const Carousel = ({ items }) => {
   const [stampsBox, setStampsBox] = useState(allStampBox);
-  // const [page, setPage] = useState(1);
   const { token } = useParams();
+  const { status, user } = useAuth();
   const navigate = useNavigate();
 
   const handleStamp = (type) => {
@@ -78,137 +80,20 @@ export const Carousel = ({ items }) => {
 
   // mock UI
   useEffect(() => {
-    setStampsBox([
-      {
-        name: "rc_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "ce_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "ce_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "me_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "me_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "pemce_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "pemce_work",
-        catagory: "workshop_stamp",
-        done: true
-      },
-      {
-        name: "ee_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "ee_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "ene_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "ene_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "tme_norm",
-        catagory: "department_stamp",
-        done: true
-      },
-      {
-        name: "tme_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "env_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "env_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "cpe_norm",
-        catagory: "department_stamp",
-        done: true
-      },
-      {
-        name: "cpe_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "inc_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "inc_work",
-        catagory: "workshop_stamp",
-        done: false
-      },
-      {
-        name: "che_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "che_work",
-        catagory: "workshop_stamp",
-        done: true
-      },
-      {
-        name: "central_norm",
-        catagory: "department_stamp",
-        done: false
-      },
-      {
-        name: "central_question",
-        catagory: "special_stamp",
-        done: false
-      },
-      {
-        name: "central_innovation",
-        catagory: "special_stamp",
-        done: false
-      },
-      {
-        name: "central_hackathon",
-        catagory: "special_stamp",
-        done: true
-      },
-    ]
-    );
+    if (status == 'authenticated') {  
+      fetch.post('/stamp',{
+        _id: user._id
+      }).then((res) => {
+        console.log("help us help us");
+        const { data } = res;
+        console.log(data)
+        setStampsBox(res.data.stamp);
+      })
+    }
     if (token)
       handleStamp(token);
-  }, [token]);
+  }, [token, status]);
+
 
   return (
     <div className="container mx-auto bg-white h-256 w-full max-w-[400px] md:max-w-[768px] mb-6 rounded-2xl p-6 md:p-10 flex flex-col shadow-lg shadow-black/50 text-gray-500">

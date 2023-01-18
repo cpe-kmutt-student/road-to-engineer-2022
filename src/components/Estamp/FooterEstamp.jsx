@@ -4,7 +4,6 @@ import fetch from '../../utils/fetchAxios';
 
 export const FooterEstamp = () => {
   const { status, user } = useAuth();
-
   const [rulesep, setRulesep] = useState({
     central: {
       name: "central",
@@ -89,6 +88,27 @@ export const FooterEstamp = () => {
   
   }, [status, data])
 
+  useEffect(() => {
+    if (status == 'authenticated') {
+      fetch.post('/stamp',{
+        _id:user._id
+      }).then((res) => {
+        const central = res.data?.stamp.filter((e) => 
+          e.catagory === "department_stamp"
+        ).filter((e) => 
+          e.name.split("_")[0] === "central"
+        ).filter((e) => e.done).length;
+        const exhibition = res.data?.stamp.filter((e) =>
+          e.catagory === "special_stamp"
+        ).filter((e) => e.done).length;
+        const workshop = res.data?.stamp.filter((e) =>
+          e.catagory === "workshop_stamp"
+        ).filter((e) => e.done).length;
+        
+        console.log(central,exhibition,workshop);
+      })
+    }
+  },[status]);
   return (
     <div>
       <img src="/image/triangle.svg" alt="triangle" className="object-fill w-screen h-8" />
