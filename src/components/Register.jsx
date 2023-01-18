@@ -85,7 +85,7 @@ export const BasicRegister = () => {
           title: 'Signed Up successfully !'
         })
         login(input.email, input.password)
-        if(type) navigate(type+"/"+(token ? token : ""));
+        if(type) navigate("/"+type+"/"+(token ? token : ""));
         else navigate("/announcement");
       })
       .catch((error) => {

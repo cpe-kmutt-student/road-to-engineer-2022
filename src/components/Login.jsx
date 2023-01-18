@@ -16,7 +16,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (status == "authenticated") {
-      if(type) navigate(type+"/"+(token ? token : ""));
+      if(type) navigate("/"+type+"/"+(token ? token : ""));
       else navigate("/announcement");
     }
   }, [status])

@@ -102,7 +102,6 @@ export const EditProfileModal = ({ user }) => {
   };
 
   const handleSubmit = () => {
-    console.log("submit to api, logout when submit successful");
     console.log(input);
   };
 
@@ -146,8 +145,10 @@ export const EditProfileModal = ({ user }) => {
             <NameDetail key="namedetail" label="Name" img="/image/person.svg" firstname={input.firstname} lastname={input.lastname} handleChange={handleChange}/>
             <ProfileDetail key="maildetail" label="Email" img="/image/mail.svg" disabled={true} value={input.email} handleChange={handleChange}/>
             <ProfileDetail key="phonedetail" label="Phone" img="/image/phone.svg" value={input.phone} handleChange={handleChange}/>
-            {user.accountType == "students" && <><ProfileDetail option={studentGrade} type={1} key="educationlevel" label="Education Level" state_name={"educationLevel"} value={input.educationLevel} handleChange={handleChange}/>
-            <ProfileDetail key="schoolname" label="School" state_name="schoolName"  value={input.schoolName} handleChange={handleChange}/></> }
+            {user.accountType == "students" && <>
+            <ProfileDetail option={studentGrade} type={1} key="educationlevel" label="Education Level" state_name={"educationLevel"} value={input.educationLevel} handleChange={handleChange}/>
+            <ProfileDetail key="schoolname" label="School" state_name="schoolName"  value={input.schoolName} handleChange={handleChange}/>
+            </> }
           </div>
 
           <div className="flex w-full gap-x-6 ">
