@@ -104,6 +104,7 @@ export const EditProfileModal = ({ user }) => {
   };
 
   const handleSubmit = () => {
+    if(input.firstname.length && input.lastname.length && input.phone.length)
     fetch.post('/edit_account',input).then((res) => {
       if (res.status == 200){
         Swal.fire({
