@@ -12,7 +12,7 @@ export const ProfilePage = () => {
 
   useEffect(()=>{
     if (status == 'unauthenticated') {
-      navigate('/login', {replace: true});
+      navigate('/login/profile', {replace: true});
     }
   })
 

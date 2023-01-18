@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "preact/hooks";
+import Swal from "sweetalert2";
 import { useAuth } from "../../contexts/AuthContext";
+import fetch from "../../utils/fetchAxios";
 
 const TextInput = ({
   name,
@@ -102,7 +104,20 @@ export const EditProfileModal = ({ user }) => {
   };
 
   const handleSubmit = () => {
-    console.log(input);
+    if(input.firstname.length && input.lastname.length && input.phone.length)
+    fetch.post('/edit_account',input).then((res) => {
+      if (res.status == 200){
+        Swal.fire({
+          title:"แก้ไขสำเร็จ",
+          html:"กรุณาเข้าสู่ระบบอีกครั้ง",
+          icon:'success',
+          timer: 1000,
+          showConfirmButton: false
+        }).then(()=> {
+          logout()
+        })
+      }
+    })
   };
 
   const handleReset = () => {
@@ -150,7 +165,7 @@ export const EditProfileModal = ({ user }) => {
             <ProfileDetail key="schoolname" label="School" state_name="schoolName"  value={input.schoolName} handleChange={handleChange}/>
             </> }
           </div>
-
+          <div className="text-xl text-center">เมื่อกดยืนยันแล้วกรุณาเข้าระบบอีกครั้ง</div>
           <div className="flex w-full gap-x-6 ">
             <button
               className="w-full text-white shadow-lg shadow-black/25 font-bold text-lg md:text-3xl bg-juicy-100 rounded-xl py-0.5"

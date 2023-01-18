@@ -86,7 +86,7 @@ export const BasicRegister = () => {
         })
         login(input.email, input.password)
         if(type) navigate("/"+type+"/"+(token ? token : ""));
-        else navigate("/announcement");
+        else navigate("/profile");
       })
       .catch((error) => {
         Swal.mixin({
