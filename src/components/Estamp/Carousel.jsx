@@ -2,12 +2,74 @@ import { useState, useEffect } from 'preact/hooks'
 import { allStampBox } from "./schema/allStampsBox"
 import { StampSection } from './StampSection';
 import { RuleSection } from './RuleSection';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
 
 export const Carousel = ({ items }) => {
 
   const [stampsBox, setStampsBox] = useState(allStampBox);
   // const [page, setPage] = useState(1);
 
+  const handleStamp = (type) => {
+    switch (type) {
+      case "exhibition":
+        withReactContent(Swal).fire({
+          imageUrl: '/image/frame-ex-alert.svg',
+          imageHeight: 150,
+          imageAlt: '',
+          title: <h1 className="text-3xl text-black">Success !</h1>,
+          html: <p className="text-2xl text-black">ยินดีด้วย <br /> คุณได้รับ E-Stamp 1 ดวง</p>,
+          confirmButtonText: <p className="font-bold text-lg">ตกลง</p>,
+          confirmButtonColor: '#D7560D',
+          customClass: {
+            confirmButton: 'h-fit py-1 px-8',
+          }
+        })
+        break;
+      case "workshop":
+        withReactContent(Swal).fire({
+          imageUrl: '/image/frame-ws-alert.svg',
+          imageHeight: 150,
+          imageAlt: '',
+          title: <h1 className="text-3xl text-black">Success !</h1>,
+          html: <p className="text-2xl text-black">ยินดีด้วย <br /> คุณได้รับ E-Stamp 1 ดวง</p>,
+          confirmButtonText: <p className="font-bold text-lg">ตกลง</p>,
+          confirmButtonColor: '#D7560D',
+          customClass: {
+            confirmButton: 'h-fit py-1 px-8',
+          }
+        })
+        break;
+      case "complete":
+        withReactContent(Swal).fire({
+          imageUrl: '/image/frame-complete-alert.svg',
+          imageHeight: 150,
+          imageAlt: '',
+          title: <h1 className="text-3xl text-black">Mission Complete !</h1>,
+          html: <p className="text-2xl text-black">คุณสะสม E-stamp <br />ครบตามกำหนดแล้ว <br /> อย่าลืมไปรับของที่ระลึกนะ !</p>,
+          confirmButtonText: <p className="font-bold text-lg">ตกลง</p>,
+          confirmButtonColor: '#D7560D',
+          showCancelButton: true,
+          cancelButtonText: <p className="font-bold text-lg">สถานที่รับ</p>,
+          cancelButtonColor: '#D7560D',
+          customClass: {
+            confirmButton: 'h-fit py-1 px-8',
+            cancelButton: 'h-fit py-1 px-8',
+          }
+        }).then((result)=>
+          result.dismiss === Swal.DismissReason.cancel && 
+            Swal.fire(
+              'icon',
+              'ที่รับ ไม่รู้จะใส่ไร เอาไอนี่ไปก่อนละกัน :)',
+              'งรืม'
+            )
+        )
+        break;
+    }
+
+  }
+
+  // mock UI
   useEffect(() => {
     setStampsBox([
       {
@@ -137,6 +199,8 @@ export const Carousel = ({ items }) => {
       },
     ]
     );
+
+    handleStamp("complete");
   }, []);
 
   return (
