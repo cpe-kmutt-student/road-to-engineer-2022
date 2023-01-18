@@ -15,13 +15,9 @@ export const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (status == "authenticated") 
-    switch (type) {
-      case "form":
-          navigate("/form/" + token);
-        break;
-      default:
-          navigate("/announcement");
+    if (status == "authenticated") {
+      if(type) navigate(type+"/"+(token ? token : ""));
+      else navigate("/announcement");
     }
   }, [status])
 
