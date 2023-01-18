@@ -16,6 +16,7 @@ export const Carousel = ({ items }) => {
 
   const handleStamp = (type) => {
     switch (type) {
+      case "main":
       case "quest":
       case "hackathon":
       case "innovation":
