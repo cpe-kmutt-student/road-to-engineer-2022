@@ -4,14 +4,19 @@ import { StampSection } from './StampSection';
 import { RuleSection } from './RuleSection';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content'
+import { useParams, useNavigate } from 'react-router-dom';
 
 export const Carousel = ({ items }) => {
-
   const [stampsBox, setStampsBox] = useState(allStampBox);
   // const [page, setPage] = useState(1);
+  const { token } = useParams();
+  const navigate = useNavigate();
 
   const handleStamp = (type) => {
     switch (type) {
+      case "quest":
+      case "hackathon":
+      case "innovation":
       case "exhibition":
         withReactContent(Swal).fire({
           imageUrl: '/image/frame-ex-alert.svg',
@@ -25,6 +30,7 @@ export const Carousel = ({ items }) => {
             confirmButton: 'h-fit py-1 px-8',
           }
         })
+        navigate('/estamp', {replace: true});
         break;
       case "workshop":
         withReactContent(Swal).fire({
@@ -39,6 +45,7 @@ export const Carousel = ({ items }) => {
             confirmButton: 'h-fit py-1 px-8',
           }
         })
+        navigate('/estamp', {replace: true});
         break;
       case "complete":
         withReactContent(Swal).fire({
@@ -199,9 +206,9 @@ export const Carousel = ({ items }) => {
       },
     ]
     );
-
-    handleStamp("complete");
-  }, []);
+    if (token)
+      handleStamp(token);
+  }, [token]);
 
   return (
     <div className="container mx-auto bg-white h-256 w-full max-w-[400px] md:max-w-[768px] mb-6 rounded-2xl p-6 md:p-10 flex flex-col shadow-lg shadow-black/50 text-gray-500">
