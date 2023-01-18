@@ -11,7 +11,7 @@ export const FooterEstamp = () => {
     },
     exhibition: {
       name: "exhibition",
-      label: <>สะสม E-stamp ซุ้มกิจกรรม <span className="text-juicy-100">*</span>ครบ 5 ดวง</>,
+      label: <>สะสม E-Stamp ซุ้มกิจกรรม <span className="text-juicy-100">*</span>ครบ 5 ดวง</>,
       collect: 0,
       rule: 5,
       check: false,
@@ -85,8 +85,8 @@ export const FooterEstamp = () => {
                 )
               })}
             </div>
-
-          </div>
+            <div className="text-juicy-100 text-2xl text-center pt-4">สามารถรับของที่ระลึกได้ที่จุดลงทะเบียน ใต้อาคารเรียนรวม 4</div>
+          </div>  
         </div>
       </div>
     </div>
