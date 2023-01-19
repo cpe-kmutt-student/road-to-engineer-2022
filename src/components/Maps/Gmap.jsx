@@ -11,8 +11,8 @@ const showMap = (id) => {
       showCloseButton: true,
       imageUrl: './image/map_web.png',
       customClass: {
-          closeButton: "text-juicy-100",
-          popup: "w-3/4"
+          closeButton: "closeBTN",
+          popup: "popupMap"
       },
       // imageWidth: 400,
       // imageHeight: 200,

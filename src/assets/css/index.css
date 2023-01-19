@@ -63,3 +63,14 @@ ol > li > ol > li {
 ul > li > ul > li {
   margin-left: 1.5rem;
 }
+.popup{
+  height: 10rem;
+}
+
+.popupMap{
+  width: 75%;
+}
+
+.closeBTN{
+  color: #E46E18;
+}

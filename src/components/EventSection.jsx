@@ -61,8 +61,8 @@ const infomation = (id) => {
         position: 'center',
         showConfirmButton: false,
         customClass: {
-            closeButton: "text-juicy-100",
-            popup: "h-40"
+            closeButton: "closeBTN",
+            popup: "popup"
         },
         html: 
         '<table class="flex justify-center border-collapse">'+
