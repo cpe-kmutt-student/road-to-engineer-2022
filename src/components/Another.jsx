@@ -37,19 +37,21 @@ export const Another = () => {
         <section className="w-auto flex flex-col justify-center items-center my-14">
           <h2 className="font-bold text-3xl md:text-4xl my-2 md:my-5">รับสมัครนักศึกษา Active Recruitment TCAS 2 ปี 2566 (หลักสูตรนานาชาติ)</h2>
           <div className="flex flex-col justify-center max-w-xl ">
-            <span className="translate-x-[-20px] font-bold text-xl md:text-2xl text-juicy-100">
+            <span className="font-bold text-xl md:text-2xl text-juicy-100">
               ขั้นตอน 
             </span>
-            <p className="md:text-2xl">
-              1. ลงทะเบียน เข้าร่วมกิจกรรม Open house
-            </p>
-            <p className="md:text-2xl">
-              2. เตรียม Portfolio และ Transcript  แล้วอัปโหลดไฟล์ไว้ใน Cloud / Google Drive / One Drive 
-            </p>
-            <p className="md:text-2xl">
-              3. นำข้อมูลในข้อที่ 2 มาสมัครที่บูธ รับสมัครนักศึกษา บริเวณอาคารเรียนรวม 4 ชั้น 1 เพื่อยื่นเอกสารผ่านระบบรับสมัคร Online
-              คือ อะไรนะ
-            </p>
+            <div className="px-3">
+              <p className="md:text-2xl">
+                1. ลงทะเบียน เข้าร่วมกิจกรรม Open house
+              </p>
+              <p className="md:text-2xl">
+                2. เตรียม Portfolio และ Transcript  แล้วอัปโหลดไฟล์ไว้ใน Cloud / Google Drive / One Drive 
+              </p>
+              <p className="md:text-2xl">
+                3. นำข้อมูลในข้อที่ 2 มาสมัครที่บูธ รับสมัครนักศึกษา บริเวณอาคารเรียนรวม 4 ชั้น 1 เพื่อยื่นเอกสารผ่านระบบรับสมัคร Online
+                คือ อะไรนะ
+              </p>
+            </div>
           </div>
         </section>
       </div>
