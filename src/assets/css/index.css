@@ -64,13 +64,13 @@ ul > li > ul > li {
   margin-left: 1.5rem;
 }
 .popup{
-  height: 10rem;
+  height: 10rem !important;
 }
 
 .popupMap{
-  width: 75%;
+  width: 75% !important;
 }
 
 .closeBTN{
-  color: #E46E18;
+  color: #E46E18 !important;
 }
