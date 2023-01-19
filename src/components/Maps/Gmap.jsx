@@ -12,7 +12,7 @@ const showMap = (id) => {
       imageUrl: './image/map_web.png',
       customClass: {
           closeButton: "text-juicy-100",
-          popup: "h-90 w-[50rem]"
+          popup: "w-3/4"
       },
       // imageWidth: 400,
       // imageHeight: 200,
