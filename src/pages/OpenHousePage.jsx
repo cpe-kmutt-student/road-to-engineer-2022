@@ -7,6 +7,7 @@ import { Maps } from '../components/Maps';
 import { Another } from '../components/Another';
 import { OpenHouseFooter } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
+import { BTNToTheTopOpenHouse } from '../components/BTNToTheTopOpenHouse';
 
 export const OpenHousePage = () => {
   return (
@@ -20,6 +21,7 @@ export const OpenHousePage = () => {
       <Faq />
       <Maps />
       <OpenHouseFooter />
+      <BTNToTheTopOpenHouse/>
     </>
   );
 }

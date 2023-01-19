@@ -101,7 +101,7 @@ export const BasicRegister = () => {
           }
         }).fire({
           icon: 'error',
-          title: 'Email has already used !'
+          title: 'Submit Error! use Support Button for help '
         })
         setInput({
           ...input,

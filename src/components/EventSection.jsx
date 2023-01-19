@@ -14,44 +14,81 @@ const lengthRightElement = [20, 60, 30, 100, 80, 20, 80]
 const location = ["RC", "PE_MCE", "CE", "ME", "EE", "TME", "CPE", "CHE", "ENE", "ENV", "INC"]
 const detail = {
     CE: {
+        time: "ในวันที่ 19 ม.ค. 66<br>"+
+                "-รอบที่ 1 : 10.00 - 11.45 น.<br>"+
+                "-รอบที่ 2 : 13.00 - 14.45 น.<br>"+
+                "ในวันที่ 20  ม.ค. 66<br>"+
+                "-รอบที่ 1 : 13.00 - 14.45 น.<br>"+
+                "-รอบที่ 2 : 15.00 - 16.45 น.<br>"+
+                "ในวันที่ 21  ม.ค. 66<br>"+
+                "-รอบที่ 1 : 10.00 - 11.45 น.<br>"+
+                "-รอบที่ 2 : 13.00 - 14.45 น. <br>"+
+                "-รอบที่ 3 : 15.00 - 16.45 น.<br>",
         reg: "หน้าบริเวณซุ้มส่วนภาค",
-        assem: "หน้าบริเวณซุ้มส่วนภาค"
+        assem: "หน้าบริเวณซุ้มส่วนภาค",
+        link: "https://forms.gle/tC4H3neAh99aypCEA"
     },
     ME: {
+        time: "10:00 – 11:00 น. และ 13:00 – 14:00 น.",
         reg: "ลานหน้าตีกภาควิชาเครื่องกล",
-        assem: "ลานหน้าตีกภาควิชาเครื่องกล"
+        assem: "ลานหน้าตีกภาควิชาเครื่องกล",
+        link: "https://forms.gle/RXFJMiGpZcse8Lbq"
     },
     PE_MCE: {
-        reg: "",
-        assem: ""
+        time: "ในวันที่ 19 ม.ค. 66<br>"+
+                "-10:00 – 11:00 น., 13:00 – 14:00 น. และ 15:00 – 16:00 น.<br>"+
+                "ในวันที่ 20  ม.ค. 66<br>"+
+                "-10:00 – 11:00 น., 13:00 – 14:00 น. และ 15:00 – 16:00 น.<br>"+
+                "ในวันที่ 21  ม.ค. 66<br>"+
+                "-10:00 – 11:00 น., 13:00 – 14:00 น.<br>",
+        reg: "ซุ้มภาค",
+        assem: "ซุ้มภาค",
+        link: "https://forms.gle/oVb8uqo7jVCiztKy8"
     },
     EE: {
-        reg: "",
-        assem: ""
+        time: "- Measurement Lab (10:00 – 11:00 น.)<br>"+
+                "- Motor Control Lab (11:00 – 12:00 น.)<br> "+
+                "- Illumination Laboratory (E-LU)  (13:00 – 14:00 น.)<br> "+
+                "- High Voltage Lab (14:00 – 15:00 น.)<br> ",
+        reg: "CB4 ชั้น 5",
+        assem: "",
+        link: "https://forms.gle/eZ7WpzabyjBapYWC9"
     },
     ENE: {
+        time: "10:00 – 11:00 น. และ 13:00 – 14:00 น.",
         reg: "ชั้น 9 ตึก CB4",
-        assem: "ชั้น 1 ตึก CB4"
+        assem: "ชั้น 1 ตึก CB4",
+        link: "https://forms.office.com/r/KVeb21NAcN"
     },
     TME: {
+        time: "10:00-11:00 น. และ 13:00-14:00 น.",
         reg: "ซุ้มส่วนถาค",
-        assem: "ซุ้มส่วนถาค"
+        assem: "ซุ้มส่วนถาค",
+        link: "https://forms.gle/iu4BgHQrBKMtCmyi7"
     },
     ENV: {
+        time: "10.30-12.00, 13.30-15.00 น. และ 15.30-17.00 น.",
         reg: "ซุ้มส่วนถาค",
-        assem: "ซุ้มส่วนถาค"
+        assem: "ซุ้มส่วนถาค",
+        link: "https://forms.gle/oaqnz9F6F6cMCTo3"
     },
     CPE: {
+        time: "10:00 - 11:00, 13:00 – 14:00 น. และ 15:00 – 16:00 น.",
         reg: "ตึกแดงชั้น 10",
-        assem: "ตึกแดงชั้น"
+        assem: "ตึกแดงชั้น",
+        link: "https://forms.office.com/r/sTcsmS0mxF"
     },
     INC: {
+        time: "10:00 – 11:00 น. และ 13:00 – 14:00 น.",
         reg: "CB4 ชั้น 6",
-        assem: "CB4 ชั้น 6"
+        assem: "CB4 ชั้น 6",
+        link: "https://forms.gle/z7iw1Ag9Cd5UiEm49"
     },
     CHE: {
+        time: " 9.00-10.50 น. และ 13:00 – 14:50 น.",
         reg: "หน้าตึกภาคเคมี",
-        assem: "หน้าตึกภาคเคมี"
+        assem: "หน้าตึกภาคเคมี",
+        link: "https://forms.gle/mfuBaFDUaRQvA5qh8"
     },
 } 
 
@@ -59,16 +96,22 @@ const infomation = (id) => {
     MySwal.fire({
         showCloseButton: true,
         position: 'center',
-        showConfirmButton: false,
+        confirmButtonColor: "#E46E18",
+        confirmButtonText: "ลงทะเบียน",
         customClass: {
             closeButton: "closeBTN",
             popup: "popup"
         },
         html: 
         '<table class="flex justify-center border-collapse">'+
-        '<tr class="text-xl" ><th class="border-2 px-10">ช่องทางลงทะเบียน walk-in มีไหม/ที่ไหน</th><th class="border-2 px-10">รวมพล ที่ไหน</th></tr>'+
-        `<tr><td>${detail[id].reg}</td><td>${detail[id].assem}</td></tr>`+
+        '<tr class="text-xl" ><th class="border-2 px-10">รอบที่เข้าได้</th><th class="border-2 px-10">ช่องทางลงทะเบียน walk-in มีไหม/ที่ไหน</th><th class="border-2 px-10">รวมพล ที่ไหน</th></tr>'+
+        `<tr><td>${detail[id].time}</td><td>${detail[id].reg}</td><td>${detail[id].assem}</td></tr>`+
         '</table>'
+    // })
+    }).then(function(result){
+        if(result["isConfirmed"]){
+            window.open(detail[id].link, "_blank")
+        }
     })
 }
 
@@ -139,7 +182,7 @@ export const EventSection = () => {
     }, [])
   return (
     <section className="bg-black flex justify-center">
-        <svg width="1440" height="2679" viewBox="0 0 1440 2679" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="1440" height="2679" viewBox="0 0 1440 2304" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Event" clip-path="url(#clip0_821_29)">
         <g id="Road">
         <g id="road">
