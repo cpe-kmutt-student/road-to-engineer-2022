@@ -99,7 +99,7 @@ export const Carousel = ({ items }) => {
   return (
     <div className="container mx-auto bg-white h-256 w-full max-w-[400px] md:max-w-[768px] mb-6 rounded-2xl p-6 md:p-10 flex flex-col shadow-lg shadow-black/50 text-gray-500">
       <div className="carousel w-full h-fit">
-        <div id="item1" className="carousel-item w-full h-fit flex flex-col">
+        <div id="item1" className="carousel-item relative w-full h-fit flex flex-col">
           <StampSection
             title="ซุ้มกิจกรรม"
             stamps={
@@ -140,10 +140,13 @@ export const Carousel = ({ items }) => {
                 })
             }
             type="special" />
-
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-[18rem] md:top-[20rem]">
+            <a href="#item2" className=""></a>
+            <a href="#item2" className="text-black">❯</a>
+          </div>
         </div>
 
-        <div id="item2" className="carousel-item w-full h-fit flex flex-col">
+        <div id="item2" className="carousel-item relative w-full h-full flex flex-col">
           <StampSection
             title="กิจกรรม Workshop"
             stamps={
@@ -162,6 +165,10 @@ export const Carousel = ({ items }) => {
                 })
             }
             type="workshop" />
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-0 right-0 top-[18rem] md:top-[20rem]">
+            <a href="#item1" className="">❮</a> 
+            <a href="#item2" className="text-black"></a> 
+          </div>
         </div>
       </div>
 
@@ -175,10 +182,7 @@ export const Carousel = ({ items }) => {
         </div>
         <label htmlFor="rule-modal" className="rounded-lg bg-juicy-200 px-2 active:translate-y-2 text-white shadow-md text-lg md:text-2xl">เงื่อนไขการได้รับ E-Stamp</label>
       </div>
-      <div className='flex flex-row justify-center gap-4 pt-8'>
-        <a className='text-center underline decoration-juicy-100/30' href="#item1">{`page 1 `} </a>
-        <a className='text-center underline decoration-juicy-100/30' href="#item2">{`page 2 `} </a>
-      </div>
+
 
     </div>
 

@@ -15,7 +15,7 @@ export const StampSection = ({ title, stamps, type }) => {
                       (type === "exhibition" &&
                         <>
                           <img src="/image/stampframe.svg" alt="" className="absolute h-[64px] md:h-[128px]" />
-                          <h2 className="absolute text-bloodred-300 font-bold text-[20px] md:text-[36px] uppercase">{e.name}</h2>
+                          <h2 className="absolute text-bloodred-300 font-bold text-[12px] sm:text-[16px] md:text-[24px] uppercase">{e.name}</h2>
                         </>
                       )
                       ||
@@ -23,14 +23,14 @@ export const StampSection = ({ title, stamps, type }) => {
                         type === "workshop" &&
                         <>
                           <img src="/image/stampframews.svg" alt="" className="absolute h-[64px] md:h-[128px]" />
-                          <h2 className="absolute text-[12px] md:text-[24px] text-white bottom-[40px] md:bottom-[80px] uppercase">{e.name}</h2>
+                          <h2 className="absolute text-[12px] md:text-[24px] text-white bottom-[38px] md:bottom-[80px] uppercase">{e.name}</h2>
                         </>
                       )
                       ||
                       (type === "special" &&
                         <>
                           <img src="/image/stampframe.svg" alt="" className="absolute h-[64px] md:h-[128px]" />
-                          <h2 className="absolute text-bloodred-300 font-bold text-[12px] md:text-[26px] uppercase">{e.name}</h2>
+                          <h2 className="absolute text-bloodred-300 font-bold text-[10px] sm:text-[12px] md:text-[26px] uppercase">{e.name}</h2>
                         </>
                       )
                     }

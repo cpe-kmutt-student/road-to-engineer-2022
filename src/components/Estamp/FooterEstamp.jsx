@@ -162,7 +162,7 @@ export const FooterEstamp = () => {
                 )
               })}
             </div>
-            <div className="text-juicy-100 text-2xl text-center pt-4">สามารถรับของที่ระลึกได้ที่จุดลงทะเบียน ใต้อาคารเรียนรวม 4</div>
+            <div className="text-juicy-100 text-xl justify-center flex-wrap break-words pt-4 flex">สามารถรับของที่ระลึกได้ที่จุดลงทะเบียน&nbsp; <div>ใต้อาคารเรียนรวม 4</div></div>
           </div>
         </div>
       </div>
