@@ -9,7 +9,7 @@ import peptein from '/image/sponsor/peptein.png'
 import techno from '/image/sponsor/techno.svg'
 import tp from '/image/sponsor/tp.svg'
 import farmluck from '/image/sponsor/farmluck.svg'
-import kmuttalllogo from '/image/kmuttalllogo.svg'
+import kmuttalllogo from '/image/all.svg'
 import triangle from '/image/triangle.svg'
 
 const bigSponsors = [
@@ -41,7 +41,7 @@ export const OpenHouseFooter = () => {
       <img src={triangle} alt="triangle" className="object-fill w-screen h-16"/>
       <div className="relative h-full w-full flex flex-col overflow-hidden bg-black z-40">
         <div className="z-50 min-h-[8rem] bg-gradient-to-b">
-          <div className="flex flex-row justify-center space-x-4 mt-10">
+          <div className="flex flex-row justify-center space-x-4 mt-5">
           <img src={kmuttalllogo} alt="kmuttlogo" className="h-20" />
           </div>
           <div className="flex flex-col justify-center py-5 md:pb-0 text-white">
