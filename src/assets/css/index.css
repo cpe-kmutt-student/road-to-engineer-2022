@@ -64,7 +64,8 @@ ul > li > ul > li {
   margin-left: 1.5rem;
 }
 .popup{
-  height: 10rem !important;
+  width: 75%;
+  /* height: 10rem !important; */
 }
 
 .popupMap{
