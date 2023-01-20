@@ -91,8 +91,8 @@ export const Carousel = ({ items }) => {
         setStampsBox(res.data.stamp);
       })
     }
-    if (token)
-      handleStamp(token);
+    // if (token)
+      // handleStamp(token);
   }, [token, status]);
 
 
