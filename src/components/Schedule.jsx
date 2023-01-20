@@ -49,7 +49,6 @@ export const Schedule = () => {
               allSchedules.map((schedule, index) => (
                 <div key={schedule.date} onClick={() => setScheduleId(index)} className={
                   `cursor-pointer
-                   text-white
                    text-xl 
                    sm:text-2xl 
                    md:text-3xl 
