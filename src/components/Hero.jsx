@@ -39,7 +39,7 @@ export const Hero = () => {
               </p>
             </div>
             <div className="flex flex-col items-center gap-4">
-              <button onClick={() => navigate("/login")} className="border-[5px]  border-juicy-100 font-bold rounded-full mt-16 sm:mt-8 py-1 md:px-14 px-10 text-lg md:text-2xl text-juicy-200 bg-white">
+              <button onClick={() => navigate("/register")} className="border-[5px]  border-juicy-100 font-bold rounded-full mt-16 sm:mt-8 py-1 md:px-14 px-10 text-lg md:text-2xl text-juicy-200 bg-white">
                 ลงทะเบียน
               </button>
               <img src="/assets/downarrow.svg" className="w-10"/>
